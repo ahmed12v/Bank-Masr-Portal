@@ -1,0 +1,195 @@
+.logout-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+
+/* User Icon */
+.logout-icon {
+
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: var(--secondary-color);
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  box-shadow: 0 6px 15px rgba(24, 35, 56, .18);
+
+  transition: background-color .2s ease, box-shadow .2s ease;
+}
+
+
+.logout-icon:hover {
+
+  background: var(--primary-color);
+
+  box-shadow: 0 8px 18px rgba(234, 91, 35, .2);
+
+}
+
+
+
+/* Logout Button Dropdown */
+.logout-btn {
+
+  position: absolute;
+
+  top: 55px;
+  right: 0;
+
+  width: 130px;
+
+  padding: 10px 15px;
+
+  border: none;
+
+  border-radius: 10px;
+
+
+  background: #fff;
+
+  color: var(--primary-color);
+
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+
+  cursor: pointer;
+
+
+  box-shadow: 0 8px 20px rgba(24, 35, 56, .15);
+
+
+  animation: dropdown .2s ease-out;
+
+  transition: background-color .2s ease, color .2s ease;
+
+}
+
+
+
+.logout-btn:hover {
+
+  background: #fff5ef;
+
+  color: var(--primary-color-dark);
+
+}
+
+
+
+/* Smooth Banking Style Animation */
+@keyframes dropdown {
+
+  from {
+
+    opacity: 0;
+
+    transform: translateY(-4px);
+
+  }
+
+
+  to {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+}
+
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+  .logout-wrapper {
+
+    top: 15px;
+
+    right: 15px;
+
+  }
+
+
+  .logout-icon {
+
+    width: 40px;
+
+    height: 40px;
+
+    font-size: 16px;
+
+  }
+
+
+  .logout-btn {
+
+    top: 50px;
+
+    width: 120px;
+
+  }
+
+}
+
+
+
+@media (max-width: 480px) {
+
+  .logout-wrapper {
+
+    top: 12px;
+
+    right: 12px;
+
+  }
+
+
+  .logout-icon {
+
+    width: 36px;
+
+    height: 36px;
+
+    font-size: 14px;
+
+  }
+
+
+  .logout-btn {
+
+    width: 110px;
+
+    font-size: 13px;
+
+  }
+
+}

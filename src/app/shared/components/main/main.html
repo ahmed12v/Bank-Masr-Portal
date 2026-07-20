@@ -1,1 +1,79 @@
-<p>main works!</p>
+
+<div class="page-header">
+
+  <button class="back-btn" >
+    <i class="fa-solid fa-arrow-right"></i>
+  </button>
+
+  <div class="header-content">
+    <h2>Shipment Center</h2>
+    <p>Select any section below to open and interact with the screen.</p>
+  </div>
+
+</div>
+
+
+<div class="custom-accordion">
+  
+  @for (section of sections; track section.id) {
+
+    <div class="accordion-item">
+
+      <div
+        class="accordion-header"
+        (click)="toggleSection(section.id)"
+      >
+
+        <div class="title-wrapper">
+          <span class="left-border"></span>
+
+          <span class="title">
+            {{ section.title }}
+          </span>
+        </div>
+
+        <i
+          class="fa-solid"
+          [class.fa-chevron-down]="!section.open"
+          [class.fa-chevron-up]="section.open">
+        </i>
+
+      </div>
+
+      @if (section.open) {
+        <div class="accordion-body">
+
+          @switch (section.id) {
+            @case (0) {
+              <!-- tracking-->
+                   <app-tracking></app-tracking>
+            }
+            @case (1) {
+              <!-- domastic-awb-greation -->
+                <app-domastic-awb-greation></app-domastic-awb-greation>
+            }
+            @case (2) {
+              <!-- AWB Search Panel -->
+               <app-awbsearch></app-awbsearch>
+            }
+
+            @case (3) {
+              <!-- Customer Support -->
+               <app-raise-compliant></app-raise-compliant>
+            }
+
+            @case (4) {
+              <!-- Delivery Management -->
+               <app-delivery-mangement></app-delivery-mangement>
+            }
+
+          }
+
+        </div>
+      }
+
+    </div>
+
+  }
+
+</div>

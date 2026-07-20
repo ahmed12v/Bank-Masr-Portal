@@ -1,1 +1,217 @@
-<p>domastic-awb-greation works!</p>
+<div class="logistics-wrapper container-fluid">
+  <div class="row g-3">
+
+    <!-- ===================== COLUMN 1 : SHIPPER ===================== -->
+    <div class="col-12 col-lg-4">
+      <div class="panel-card h-100">
+        <div class="panel-header header-dark">
+          <i class="bi bi-building me-2"></i>
+          <span>Shipper (Origin) Details</span>
+        </div>
+        <div class="panel-body">
+
+          <label class="field-label">AIRWAYBILL NO</label>
+          <input type="text" class="form-control"  name="airwaybillNo">
+
+          <label class="field-label mt-3">SHIPPER / ACCOUNT NAME <span class="req">*</span></label>
+          <input type="text" class="form-control"  name="shipperName" required>
+
+          <label class="field-label mt-3">CONTACT PERSON <span class="req">*</span></label>
+          <input type="text" class="form-control"  name="shipperContactPerson" required>
+
+          <label class="field-label mt-3">ADDRESS LINE 1 <span class="req">*</span></label>
+          <input type="text" class="form-control"  name="shipperAddress1" required>
+
+          <label class="field-label mt-3">ADDRESS LINE 2 (AREA)</label>
+          <input type="text" class="form-control"  name="shipperAddress2">
+
+          <div class="row g-2 mt-1">
+            <div class="col-6">
+              <label class="field-label">ORIGIN CITY <span class="req">*</span></label>
+              <select class="form-select"  name="originCity" required>
+                <option value="" disabled selected>Select</option>
+               
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="field-label">PHONE <span class="req">*</span></label>
+              <input type="tel" class="form-control"  name="shipperPhone" required>
+            </div>
+          </div>
+
+          <label class="field-label mt-3">MOBILE NUMBER</label>
+          <input type="tel" class="form-control"  name="shipperMobile">
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== COLUMN 2 : CONSIGNEE ===================== -->
+    <div class="col-12 col-lg-4">
+      <div class="panel-card h-100">
+        <div class="panel-header header-orange">
+          <i class="bi bi-truck me-2"></i>
+          <span>Consignee (Destination) Details</span>
+        </div>
+        <div class="panel-body">
+
+          <label class="field-label">CUSTOMER ACCOUNT CODE</label>
+          <input type="text" class="form-control bg-light"  name="customerAccountCode" readonly>
+
+          <label class="field-label mt-3">CONSIGNEE NAME / COMPANY <span class="req">*</span></label>
+          <div class="input-group">
+            <input type="text" class="form-control"  name="consigneeName" required>
+            <span class="input-group-text search-icon"><i class="bi bi-search"></i></span>
+          </div>
+
+          <label class="field-label mt-3">CONTACT PERSON <span class="req">*</span></label>
+          <input type="text" class="form-control"  name="consigneeContactPerson" required>
+
+          <label class="field-label mt-3">DELIVERY ADDRESS 1 <span class="req">*</span></label>
+          <input type="text" class="form-control" name="deliveryAddress1" required>
+
+          <label class="field-label mt-3">DELIVERY ADDRESS 2 (AREA)</label>
+          <input type="text" class="form-control" name="deliveryAddress2">
+
+          <div class="row g-2 mt-1">
+            <div class="col-6">
+              <label class="field-label">DESTINATION CITY <span class="req">*</span></label>
+              <select class="form-select"  name="destinationCity" required>
+                <option value="" disabled selected>Select</option>
+                <option >
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="field-label">PHONE <span class="req">*</span></label>
+              <input type="tel" class="form-control" name="consigneePhone" required>
+            </div>
+          </div>
+
+          <label class="field-label mt-3">MOBILE NUMBER</label>
+          <input type="tel" class="form-control" name="consigneeMobile">
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== COLUMN 3 : LOGISTICS PRICING WEIGHTS ===================== -->
+    <div class="col-12 col-lg-4">
+      <div class="panel-card">
+        <div class="panel-header header-dark">
+          <i class="bi bi-calculator me-2"></i>
+          <span>Logistics Pricing Weights</span>
+        </div>
+        <div class="panel-body">
+
+          <div class="row g-2">
+            <div class="col-6">
+              <label class="field-label">BILLING DATE</label>
+              <input type="date" class="form-control bg-light"  name="billingDate">
+            </div>
+            <div class="col-6">
+              <label class="field-label">SHIPPER REFERENCE</label>
+              <input type="text" class="form-control" name="shipperReference">
+            </div>
+          </div>
+
+          <div class="row g-2 mt-1">
+            <div class="col-6">
+              <label class="field-label">PRODUCT TYPE <span class="req">*</span></label>
+              <select class="form-select"  name="productType" required>
+                <option value="" disabled selected>Select</option>
+                <option >
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="field-label">SERVICE LEVEL <span class="req">*</span></label>
+              <select class="form-select" name="serviceLevel" required>
+                <option value="" disabled selected>Select</option>
+                <option >
+              </select>
+            </div>
+          </div>
+
+          <div class="row g-2 mt-1">
+            <div class="col-6">
+              <label class="field-label">TOTAL PIECES COUNT</label>
+              <input type="number" min="1" class="form-control text-center"  name="totalPiecesCount">
+            </div>
+            <div class="col-6">
+              <label class="field-label">ACTUAL WEIGHT (KG)</label>
+              <input type="number" class="form-control"  name="actualWeight">
+            </div>
+          </div>
+
+          <label class="field-label mt-3">SINGLE PIECE DIMENSIONS (L X W X H CM)</label>
+          <div class="row g-2">
+            <div class="col-4">
+              <input type="text" class="form-control text-center" placeholder="L"  name="length">
+            </div>
+            <div class="col-4">
+              <input type="text" class="form-control text-center" placeholder="W"  name="width">
+            </div>
+            <div class="col-4">
+              <input type="text" class="form-control text-center" placeholder="H"  name="height">
+            </div>
+          </div>
+
+          <div class="row g-2 mt-1">
+            <div class="col-6">
+              <label class="field-label">VOLUMETRIC WEIGHT</label>
+              <input type="text" class="form-control bg-light" name="volumetricWeight" readonly>
+            </div>
+            <div class="col-6">
+              <label class="field-label">CHARGABLE WEIGHT <span class="req">*</span></label>
+              <input type="text" class="form-control chargable-field"  name="chargableWeight" required>
+            </div>
+          </div>
+
+          <div class="row g-2 mt-1">
+            <div class="col-6">
+              <label class="field-label">COD CASH TO COLLECT</label>
+              <input type="text" class="form-control"  name="codCashToCollect">
+            </div>
+            <div class="col-6">
+              <label class="field-label">PRINT FORMAT OUTPUT</label>
+              <select class="form-select"  name="printFormatOutput">
+                <option >
+              </select>
+            </div>
+          </div>
+
+          <label class="field-label mt-3">GOODS DESCRIPTION</label>
+          <input type="text" class="form-control" placeholder="Cargo manifest details"
+                 name="goodsDescription">
+
+        </div>
+      </div>
+
+      <!-- ===================== ACTION BUTTONS ===================== -->
+      <div class="actions-card mt-3">
+        <div class="row g-2">
+          <div class="col-8">
+            <button type="button" class="btn btn-submit w-100" (click)="onSubmitBill()">
+              <i class="bi bi-check-circle-fill me-2"></i>Submit Bill
+            </button>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-print w-100" (click)="onPrint()">
+              <i class="bi bi-printer-fill me-2"></i>Print
+            </button>
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-notes w-100" (click)="onAddNotes()">
+              <i class="bi bi-file-earmark-text me-2"></i>Add Notes
+            </button>
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-clear w-100" (click)="onClearForm()">
+              <i class="bi bi-arrow-counterclockwise me-2"></i>Clear Form
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

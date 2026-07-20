@@ -1,1 +1,19 @@
-<p>home works!</p>
+<div class="logout-wrapper">
+
+  <!-- Icon -->
+  <button class="logout-icon" (click)="showLogout = !showLogout">
+    <i class="fa-solid fa-user"></i>
+  </button>
+
+
+  <!-- Logout Button -->
+  @if(showLogout){
+    <button class="logout-btn" (click)="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      Logout
+    </button>
+  }
+
+</div>
+
+<app-main></app-main>

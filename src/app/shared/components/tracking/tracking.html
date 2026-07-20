@@ -1,1 +1,69 @@
-<p>tracking works!</p>
+<div class="tracking-card">
+
+  <div class="tracking-header">
+    <div class="title-wrapper">
+      <div class="icon-box">
+        <i class="fa-solid fa-magnifying-glass-location"></i>
+      </div>
+
+      <div>
+        <h2>Consignment Tracking Engine</h2>
+        <p>
+          Real-time lifecycle visibility for domestic and international air waybills
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Box -->
+  <div class="tracking-search">
+
+    <div class="input-group custom-search">
+
+      <span class="input-group-text">
+        <i class="fa-solid fa-barcode"></i>
+      </span>
+
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Air Waybill Number (e.g., EGX94820147)"
+      />
+
+      <button class="btn track-btn">
+        <i class="fa-solid fa-satellite-dish me-2"></i>
+        Track Shipment
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Empty State -->
+  <div class="tracking-empty">
+
+    <div class="empty-content">
+
+      <div class="empty-icon">
+        <i class="fa-solid fa-location-crosshairs"></i>
+      </div>
+
+      <h4>No Active Consignment Traced</h4>
+
+      <p>
+        Supply a targeted air waybill sequence number inside the top
+        operational panel controls to fetch processing milestones.
+      </p>
+
+      <!-- لما الباك يجهز اعرض الداتا هنا -->
+      <!--
+      @if (trackingData) {
+        // Tracking Timeline Here
+      }
+      -->
+
+    </div>
+
+  </div>
+
+</div>

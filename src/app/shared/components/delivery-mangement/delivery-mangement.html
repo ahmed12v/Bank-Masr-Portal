@@ -1,1 +1,126 @@
-<p>delivery-mangement works!</p>
+<div class="card shipment-card shadow-sm">
+
+  <!-- Header -->
+  <div class="card-header shipment-header">
+    SHIPMENT &amp; DELIVERY PARAMETERS
+  </div>
+
+  <div class="card-body p-3 p-md-4">
+
+    <!-- AWB No / Date -->
+    <div class="row g-3">
+      <div class="col-12 col-md-6">
+        <label class="form-label field-label">AWB NO</label>
+        <input type="text" class="form-control" placeholder="Enter AWB Number"  name="awbNo">
+      </div>
+      <div class="col-12 col-md-6">
+        <label class="form-label field-label">DATE</label>
+        <input type="date" class="form-control bg-light"  name="date">
+      </div>
+    </div>
+
+    <!-- Consignee -->
+    <div class="row g-3 mt-1">
+      <div class="col-12">
+        <label class="form-label field-label">CONSIGNEE</label>
+        <input type="text" class="form-control" placeholder="Consignee Name"  name="consignee">
+      </div>
+    </div>
+
+    <!-- Current Address -->
+    <div class="row g-3 mt-1">
+      <div class="col-12">
+        <label class="form-label field-label">CURRENT ADDRESS</label>
+        <textarea class="form-control" rows="3" placeholder="Current Address Details"
+                  name="currentAddress"></textarea>
+      </div>
+    </div>
+
+    <hr class="my-4">
+
+    <!-- Delivery Option -->
+    <div class="mb-2">
+      <label class="form-label field-label">DELIVERY OPTION</label>
+    </div>
+    <div class="row g-3">
+      <div class="col-12 col-md-6">
+        <div class="option-box" [class.selected]="deliveryOption === 'pickup'"
+             (click)="selectDeliveryOption('pickup')">
+          <input class="form-check-input me-2" type="radio" name="deliveryOption"
+                 [checked]="deliveryOption === 'pickup'" (change)="selectDeliveryOption('pickup')">
+          <span class="fw-semibold">Pickup from Office</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="option-box" [class.selected]="deliveryOption === 'schedule'"
+             (click)="selectDeliveryOption('schedule')">
+          <input class="form-check-input me-2" type="radio" name="deliveryOption"
+                 [checked]="deliveryOption === 'schedule'" (change)="selectDeliveryOption('schedule')">
+          <span class="fw-semibold">Schedule a Delivery</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Consignee Schedule Details -->
+    <div class="schedule-panel mt-4" *ngIf="deliveryOption === 'schedule'">
+      <div class="schedule-title mb-3">CONSIGNEE SCHEDULE DETAILS</div>
+
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <label class="form-label field-label">CONSIGNEE NAME</label>
+          <input type="text" class="form-control"  name="scheduleConsigneeName">
+        </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label field-label">PHONE</label>
+          <input type="tel" class="form-control"  name="phone">
+        </div>
+      </div>
+
+      <div class="row g-3 mt-1">
+        <div class="col-12 col-md-6">
+          <label class="form-label field-label">ADDRESS 1</label>
+          <input type="text" class="form-control"  name="address1">
+        </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label field-label">ADDRESS 2</label>
+          <input type="text" class="form-control"  name="address2">
+        </div>
+      </div>
+
+      <div class="row g-3 mt-1">
+        <div class="col-12 col-md-4">
+          <label class="form-label field-label">CITY</label>
+          <select class="form-select" name="city">
+            <option value="" disabled selected>Select City</option>
+            <option *ngFor="let c of cities" [value]="c">{{ c }}</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-4">
+          <label class="form-label field-label">PREFERRED DATE</label>
+          <input type="date" class="form-control" name="preferredDate">
+        </div>
+        <div class="col-12 col-md-4">
+          <label class="form-label field-label">PREFERRED TIME</label>
+          <input type="text" class="form-control" placeholder="e.g., 10:00 AM"
+                name="preferredTime">
+        </div>
+      </div>
+
+      <div class="row g-3 mt-1">
+        <div class="col-12">
+          <label class="form-label field-label">SPECIAL INSTRUCTION</label>
+          <input type="text" class="form-control" placeholder="Optional notes"
+                name="specialInstruction">
+        </div>
+      </div>
+    </div>
+
+    <!-- Save Button -->
+    <div class="d-flex justify-content-end mt-4">
+      <button type="button" class="btn btn-save" (click)="onSave()">
+        Save &amp; Location Update
+      </button>
+    </div>
+
+  </div>
+</div>

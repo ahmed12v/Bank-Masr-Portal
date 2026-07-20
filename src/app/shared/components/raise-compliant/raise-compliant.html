@@ -1,1 +1,205 @@
-<p>raise-compliant works!</p>
+  <div class="container-fluid complaint-wrapper py-3">
+
+    <!-- HEADER -->
+    <div class="page-header mb-3">
+        <div class="d-flex align-items-center gap-2">
+            <i class="fa fa-headset header-icon"></i>
+            <div>
+                <h2 class="mb-1">Customer Complaint Registration Registry</h2>
+                <p class="mb-0">
+                    Log, categorize, track resolution status indices, and trail systemic action taken metrics
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3">
+
+        <!-- LEFT SIDE -->
+        <div class="col-lg-6">
+
+            <div class="card custom-card">
+
+                <div class="card-header dark-header">
+                    Complainant Contact Context
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <label>Registration No.</label>
+                            <input type="text" class="form-control" value="10057">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Date Lodged</label>
+                            <input type="date" class="form-control">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Account Code</label>
+                            <input type="text" class="form-control" value="D77777">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Company Profile Corporate Title</label>
+                            <input type="text" class="form-control" value="TEST">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label>Complainant Registered Name</label>
+                            <input type="text" class="form-control" value="test person">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Contact Phone No.</label>
+                            <input type="text" class="form-control" value="974588122">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Communication Email Endpoint</label>
+                            <input type="email" class="form-control" value="testdemo@gmail.com">
+                        </div>
+
+                        <div class="col-12">
+                            <label>Detailed Nature of Incident Narrative</label>
+                            <textarea class="form-control" rows="5"
+                                placeholder="Log deep technical error tracking parameters..."></textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="col-lg-6">
+
+            <div class="card custom-card">
+
+                <div class="card-header orange-header">
+                    Investigation & Routing Level Actions
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <label>Associated Airwaybill No (AWB)</label>
+                            <input type="text" class="form-control" placeholder="AWB Reference Identification">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Associated Cargo Booking No</label>
+                            <input type="text" class="form-control" placeholder="Booking Request code map">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label>Root Classification Category Type</label>
+                            <select class="form-select">
+                                <option>Select Category</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Internal Status Code</label>
+                            <input type="text" class="form-control" placeholder="Status ID">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Current Processing Status Label</label>
+                            <input type="text" class="form-control"
+                                value="Pending Resolution Trail Discovery">
+                        </div>
+
+                        <div class="col-12">
+                            <label>Consolidated Resolution Action Taken Summary</label>
+                            <textarea class="form-control" rows="5"
+                                placeholder="Read-only operations desk resolution summary log..."></textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="action-bar mt-3">
+
+        <button class="btn btn-register">
+            <i class="fa fa-check-circle"></i> Register Complaint
+        </button>
+
+        <button class="btn btn-dark" (click)="openModal()">
+            <i class="fa fa-plus"></i> Append Notes
+        </button>
+
+        <button class="btn btn-outline-secondary">
+            <i class="fa fa-rotate"></i> Clear Screen
+        </button>
+
+    </div>
+
+                </div>
+
+
+
+        
+        
+<div class="custom-modal" [class.show]="isOpen">
+
+  <div class="modal-overlay" (click)="closeModal()"></div>
+
+  <div class="modal-box">
+
+    <!-- HEADER -->
+    <div class="modal-header">
+      <div class="title">
+        <i class="fa fa-file-alt"></i>
+        Log Transaction Details
+      </div>
+
+      <span class="close" (click)="closeModal()">×</span>
+    </div>
+
+    <!-- BODY -->
+    <div class="modal-body">
+
+      <label>NOTE CONTEXT CATEGORY</label>
+      <select class="form-control">
+        <option>Customer Complaint</option>
+      </select>
+
+      <label>TRANSACTION REFERENCE NO.</label>
+      <input class="form-control" value="10058">
+
+      <label>MESSAGE SUBJECT TITLE</label>
+      <input class="form-control" value="Complaint Reference No 10058">
+
+      <label>REQUISITION NOTES LOG TEXT</label>
+      <textarea class="form-control" rows="5"></textarea>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="modal-footer">
+
+      <button class="btn-outline" (click)="restform()">Reset Form</button>
+      <button class="btn-primary">Append Notes</button>
+
+    </div>
+
+  </div>
+
+</div>

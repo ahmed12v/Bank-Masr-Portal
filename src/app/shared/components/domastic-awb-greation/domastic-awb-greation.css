@@ -1,0 +1,173 @@
+:host {
+  display: block;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.logistics-wrapper {
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+  background-color: #f4f5f7;
+}
+
+/* ---- Panel card ---- */
+.panel-card {
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 18px;
+}
+
+.header-dark {
+  background-color: #2f2f2f;
+}
+
+.header-orange {
+  background-color: #ef5b25;
+}
+
+.panel-body {
+  padding: 18px 20px 20px;
+  flex: 1 1 auto;
+}
+
+/* ---- Labels ---- */
+.field-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.req {
+  color: #ef5b25;
+}
+
+/* ---- Inputs ---- */
+.form-control,
+.form-select {
+  border-color: #d9d9d9;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  padding: 9px 12px;
+}
+
+.form-control::placeholder {
+  color: #adb5bd;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #ef5b25;
+  box-shadow: 0 0 0 0.15rem rgba(239, 91, 37, 0.15);
+}
+
+.search-icon {
+  background-color: #fff;
+  border-color: #d9d9d9;
+  color: #ef5b25;
+}
+
+.chargable-field {
+  background-color: #e9f9ee;
+  border-color: #bfe8cc;
+}
+
+/* ---- Action buttons ---- */
+.actions-card {
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.btn {
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  border-radius: 4px;
+}
+
+.btn-submit {
+  background-color: #ef5b25;
+  border-color: #ef5b25;
+  color: #fff;
+}
+
+.btn-submit:hover {
+  background-color: #d94e1c;
+  color: #fff;
+}
+
+.btn-print {
+  background-color: #2f6bf0;
+  border-color: #2f6bf0;
+  color: #fff;
+}
+
+.btn-print:hover {
+  background-color: #2559cf;
+  color: #fff;
+}
+
+.btn-notes {
+  background-color: #2f2f2f;
+  border-color: #2f2f2f;
+  color: #fff;
+}
+
+.btn-notes:hover {
+  background-color: #1c1c1c;
+  color: #fff;
+}
+
+.btn-clear {
+  background-color: #fff;
+  border-color: #d9d9d9;
+  color: #333;
+}
+
+.btn-clear:hover {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 991.98px) {
+  .logistics-wrapper {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .panel-header {
+    font-size: 0.85rem;
+    padding: 12px 14px;
+  }
+
+  .panel-body {
+    padding: 14px;
+  }
+
+  .actions-card .col-8,
+  .actions-card .col-4,
+  .actions-card .col-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

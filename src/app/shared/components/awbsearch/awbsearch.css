@@ -1,0 +1,59 @@
+.page-title {
+  color: #1d3557;
+  font-weight: 700;
+}
+
+.search-icon {
+  color: #f45b22;
+  font-size: 30px;
+}
+
+.card {
+  border-radius: 18px;
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #344767;
+}
+
+.custom-input {
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid #dce1e7;
+}
+
+.custom-input:focus {
+  box-shadow: none;
+  border-color: #f45b22;
+}
+
+.action-btn {
+  height: 42px;
+  border-radius: 10px;
+}
+
+.execute-btn {
+  background: #f45b22;
+  color: white;
+  border-radius: 10px;
+  min-width: 180px;
+}
+
+.execute-btn:hover {
+  background: #e04f20;
+  color: white;
+}
+
+.table thead th {
+  background: #fff;
+  color: #344767;
+  font-weight: 700;
+  padding: 18px;
+}
+
+.empty-icon {
+  font-size: 60px;
+  color: #7b8794;
+}
