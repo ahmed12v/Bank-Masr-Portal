@@ -1,0 +1,114 @@
+<div class="audit-desk">
+
+  <!-- Header Card -->
+  <div class="card-panel header-panel">
+    <h1 class="page-title">Complaint Resolution Audit Desk</h1>
+    <p class="page-subtitle">
+      Query historical tickets,check resolution paths,and
+      export performance reports
+    </p>
+  </div>
+
+  <!-- Filters Card -->
+  <div class="card-panel filters-panel">
+    <div class="row gx-3 gy-3">
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <label class="field-label" for="dateFrom">Date From</label>
+        <input type="date" id="dateFrom" class="form-control field-input" value="2026-07-21">
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <label class="field-label" for="dateTo">Date To</label>
+        <input type="date" id="dateTo" class="form-control field-input" value="2026-07-21">
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <label class="field-label" for="awbNo">AWB / Booking No.</label>
+        <input type="text" id="awbNo" class="form-control field-input" placeholder="Tracking code ID">
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <label class="field-label" for="statusCode">Internal Status Code</label>
+        <input type="text" id="statusCode" class="form-control field-input" placeholder="E.G., CC, OP">
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <label class="field-label" for="lifecycleStatus">Lifecycle Status</label>
+        <select id="lifecycleStatus" class="form-select field-input">
+          <option>All Tickets</option>
+          <option>Open</option>
+          <option>In Progress</option>
+          <option>Resolved</option>
+          <option>Closed</option>
+        </select>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-2">
+        <label class="field-label">Active Queue Metrics</label>
+        <div class="metrics-box">0</div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <label class="field-label" for="regFrom">Reg Sequence From</label>
+        <input type="text" id="regFrom" class="form-control field-input" placeholder="Starting index">
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <label class="field-label" for="regTo">Reg Sequence To</label>
+        <input type="text" id="regTo" class="form-control field-input" placeholder="Ending index">
+      </div>
+
+      <div class="col-12 col-lg-6 d-flex align-items-end justify-content-end gap-2 action-buttons">
+        <button type="button" class="btn btn-reset">
+          <i class="bi bi-arrow-counterclockwise"></i>
+          Reset
+        </button>
+        <button type="button" class="btn btn-query">
+          <i class="bi bi-search"></i>
+          Query Databanks
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Results Card -->
+  <div class="card-panel results-panel">
+
+    <!-- Table header -->
+    <div class="table-responsive">
+      <table class="table results-table mb-0">
+        <thead>
+          <tr>
+            <th>Complaint Reg No</th>
+            <th>Date Logged</th>
+            <th>Associated Airway Bill</th>
+            <th>Complainant Core Issue Statement</th>
+            <th>Root Cause Category</th>
+            <th>Lifecycle Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data rows render here once results are returned -->
+          <!-- <tr *ngFor="let row of results">...</tr> -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Empty state (shown when there are no results) -->
+    <div class="empty-state">
+      <i class="bi bi-clipboard2 empty-icon"></i>
+      <p class="empty-title">
+        No active complaint parameters traced inside this ledger
+        <span class="">checkpoint</span> view window.
+      </p>
+      <p class="empty-subtitle">
+        Supply tracking properties inside the top
+        control panel layout grid , then execute query.
+      </p>
+    </div>
+
+  </div>
+
+</div>

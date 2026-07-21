@@ -4,10 +4,11 @@ import { DeliveryMangement } from '../delivery-mangement/delivery-mangement';
 import { DomasticAwbGreation } from '../domastic-awb-greation/domastic-awb-greation';
 import { RaiseCompliant } from '../raise-compliant/raise-compliant';
 import { Tracking } from '../tracking/tracking';
+import { QuaryComp } from '../quary-comp/quary-comp';
 
 @Component({
   selector: 'app-main',
-  imports: [AWBsearch , DeliveryMangement , DomasticAwbGreation , RaiseCompliant , Tracking],
+  imports: [AWBsearch , DeliveryMangement , DomasticAwbGreation , RaiseCompliant , Tracking ,QuaryComp],
   templateUrl: './main.html',
   styleUrl: './main.css',
 })
@@ -44,6 +45,12 @@ export class Main {
       icon: "fa-solid fa-credit-card",
       open: false,
     },
+    {
+      id: 5,
+      title: "Compliant Status",
+      icon: "fa-solid fa-envelope",
+      open: false,
+    }
   ];
 
   toggleSection(id: number): void {
