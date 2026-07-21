@@ -125,3 +125,403 @@
   max-width: 500px;
   margin: auto;
 }
+/* ===== Shell ===== */
+.tracking-detail {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-panel {
+  background-color: #ffffff;
+  border: 1px solid #e4e8ef;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===== Summary strip ===== */
+.summary-panel {
+  padding: 24px 28px 8px 28px;
+  margin-bottom: 16px;
+}
+
+.summary-item {
+  border-right: 1px solid #eef0f4;
+}
+
+.summary-item:last-child,
+.col-6.col-lg-3.summary-item:nth-child(2n) {
+  border-right: none;
+}
+
+@media (min-width: 992px) {
+  .summary-item:nth-child(2n) {
+    border-right: 1px solid #eef0f4;
+  }
+  .summary-item:last-child {
+    border-right: none;
+  }
+}
+
+.summary-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8b93a1;
+  margin-bottom: 6px;
+}
+
+.summary-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1c2430;
+}
+
+.link-value {
+  color: #3b6ec7;
+  font-weight: 600;
+}
+
+.success-value {
+  color: #1c8a4c;
+}
+
+.summary-divider {
+  border: none;
+  border-top: 1px solid #eef0f4;
+  margin: 20px 0;
+}
+
+/* ===== Origin / Destination ===== */
+.party-block {
+  padding-bottom: 20px;
+}
+
+.party-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1c2430;
+  margin-bottom: 10px;
+}
+
+.party-icon {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.party-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1c2430;
+  margin-bottom: 4px;
+}
+
+.party-address {
+  font-size: 0.82rem;
+  color: #8b93a1;
+  line-height: 1.5;
+}
+
+/* ===== Journey panel ===== */
+.journey-panel {
+  padding: 0;
+  overflow: hidden;
+}
+
+.journey-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1c2430;
+  padding: 20px 28px;
+  border-bottom: 1px solid #eef0f4;
+}
+
+.journey-header-icon {
+  color: #6b7280;
+}
+
+.journey-timeline {
+  background-color: #f7f8fa;
+  padding: 24px 28px;
+}
+
+.journey-row {
+  display: grid;
+  grid-template-columns: 78px 24px 1fr;
+  column-gap: 14px;
+}
+
+.journey-date-col {
+  text-align: left;
+  padding-top: 4px;
+}
+
+.journey-date {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1c2430;
+}
+
+.journey-time {
+  font-size: 0.72rem;
+  color: #9aa1ac;
+  margin-top: 2px;
+}
+
+/* Rail */
+.journey-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.journey-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.dot-active {
+  background-color: #e6543a;
+  box-shadow: 0 0 0 3px rgba(230, 84, 58, 0.15);
+}
+
+.dot-inactive {
+  background-color: #ffffff;
+  border: 2px solid #c7ccd6;
+}
+
+.journey-line {
+  width: 2px;
+  flex: 1;
+  background-color: #dde1e8;
+  margin-top: 4px;
+}
+
+/* Event card */
+.journey-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e8ef;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+}
+
+.journey-row:last-child .journey-card {
+  margin-bottom: 0;
+}
+
+.journey-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.location-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f0f1f4;
+  color: #4b5563;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.location-chip i {
+  color: #e6543a;
+}
+
+.journey-remarks {
+  font-size: 0.85rem;
+  color: #374151;
+}
+
+/* Status badges */
+.status-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 5px 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.badge-delivered {
+  background-color: #e6f7ec;
+  color: #1c8a4c;
+  border-color: #bfe8cf;
+}
+
+.badge-transit {
+  background-color: #f0f1f4;
+  color: #4b5563;
+  border-color: #dde1e8;
+}
+
+.badge-facility {
+  background-color: #ffffff;
+  color: #3b6ec7;
+  border-color: #bcd1f0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 991.98px) {
+  .summary-item {
+    border-right: none !important;
+    border-bottom: 1px solid #eef0f4;
+    padding-bottom: 14px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .summary-panel,
+  .journey-header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .journey-timeline {
+    padding: 18px 12px;
+  }
+  .journey-row {
+    grid-template-columns: 56px 20px 1fr;
+    column-gap: 8px;
+  }
+  .journey-date-col {
+    font-size: 0.7rem;
+  }
+  .journey-card {
+    padding: 12px 14px;
+  }
+}
+/* Overlay */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(24, 35, 56, 0.08);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
+  animation: fadeIn .25s ease;
+}
+
+/* Popup */
+.status-popup {
+  width: 420px;
+  max-width: calc(100vw - 32px);
+
+  background: #fff;
+  border-radius: 18px;
+
+  padding: 24px;
+
+  text-align: center;
+
+  border-top: 5px solid var(--primary-color);
+
+  box-shadow:
+    0 10px 30px rgba(24, 35, 56, .12);
+
+  position: relative;
+
+  animation: popupIn .3s ease;
+}
+
+.status-popup-icon {
+  width: 72px;
+  height: 72px;
+
+  margin: 0 auto 18px;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(234, 91, 35, .12);
+
+  color: var(--primary-color);
+
+  font-size: 34px;
+}
+
+.status-popup-content h5 {
+  margin: 0 0 10px;
+
+  color: var(--secondary-color);
+
+  font-weight: 700;
+}
+
+.status-popup-content p {
+  margin: 0;
+
+  color: #6b7280;
+
+  line-height: 1.6;
+}
+
+.status-popup-close {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  border: none;
+  background: transparent;
+
+  color: #9ca3af;
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.status-popup-close:hover {
+  color: var(--primary-color);
+}
+
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: scale(.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

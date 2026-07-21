@@ -9,8 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AriWayBill {
   private api = inject(ApiService);
-    private apiUrl = `${environment.baseUrl}`;
-
+  private apiUrl = `${environment.baseUrl}`;
 
  CreateAirwayBill(body:CreateAirwayBill ): Observable<CreateAWBRes> {
     return this.api.post<CreateAWBRes>(`${this.apiUrl}/CreateAirwayBill`,body);

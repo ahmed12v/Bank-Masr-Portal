@@ -9,37 +9,275 @@
       <div>
         <h2>Consignment Tracking Engine</h2>
         <p>
-          Real-time lifecycle visibility for domestic and international air waybills
+          Real-time lifecycle visibility for domestic and international air
+          waybills
         </p>
       </div>
     </div>
   </div>
 
-  <!-- Search Box -->
-  <div class="tracking-search">
+  <!-- Search -->
+  <form [formGroup]="trackFormSend" (ngSubmit)="trackNow()">
+    <div class="tracking-search">
 
-    <div class="input-group custom-search">
+      <div class="input-group custom-search">
 
-      <span class="input-group-text">
-        <i class="fa-solid fa-barcode"></i>
+        <span class="input-group-text">
+          <i class="fa-solid fa-barcode"></i>
+        </span>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Air Waybill Number (e.g. EGX94820147)"
+          formControlName="TrackingNo"
+        />
+
+        <button class="btn track-btn" type="submit">
+          
+          @if(spinnerTrack()){
+            <i class="fa-spinner fa-spin fa-solid"></i>
+          }@else {
+            <i class="fa-solid fa-satellite-dish me-2"></i>
+          Track Shipment
+          }
+          
+        </button>
+
+      </div>
+
+    </div>
+  </form>
+
+  @if (!isEmpty && trackInfooo) {
+
+  <div class="tracking-detail">
+
+    <!-- ================= Summary ================= -->
+
+    <div class="card-panel summary-panel">
+
+      <div class="row gy-3">
+
+        <div class="col-6 col-lg-3 summary-item">
+          <div class="summary-label">
+            Consignment Packages
+          </div>
+
+          <div class="summary-value">
+            {{ trackInfooo.TrackInfo[0].ShipmentInformation.Pcs }} Pcs
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3 summary-item">
+          <div class="summary-label">
+            Gross Chargeable Weight
+          </div>
+
+          <div class="summary-value">
+            {{ trackInfooo.TrackInfo[0].ShipmentInformation.Weight }} Kg
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3 summary-item">
+          <div class="summary-label">
+            Forwarding Network ID
+          </div>
+
+          <div class="summary-value link-value">
+            {{
+              trackInfooo.TrackInfo[0].ShipmentInformation.ServiceType
+                || 'Direct Routing'
+            }}
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3 summary-item">
+          <div class="summary-label">
+            COD Financial Settlement
+          </div>
+
+          <div class="summary-value success-value">
+            {{
+              trackInfooo.TrackInfo[0].ShipmentInformation.CustomerCash
+                || '0.00'
+            }}
+            EGP
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="summary-divider">
+
+      <div class="row gy-4">
+
+        <div class="col-12 col-lg-6 party-block">
+
+          <div class="party-heading">
+            <i class="bi bi-signpost-split-fill party-icon"></i>
+            <span>Origin Shipper</span>
+          </div>
+
+          <div class="party-name">
+            {{ trackInfooo.TrackInfo[0].ShipmentInformation.Sender }}
+          </div>
+
+          <div class="party-address">
+            {{ trackInfooo.TrackInfo[0].ShipmentInformation.ShipperDetails }}
+          </div>
+
+        </div>
+
+        <div class="col-12 col-lg-6 party-block">
+
+          <div class="party-heading">
+            <i class="bi bi-truck party-icon"></i>
+            <span>Destination Consignee</span>
+          </div>
+
+          <div class="party-name">
+            {{ trackInfooo.TrackInfo[0].ShipmentInformation.Receiver }}
+          </div>
+
+   <div class="party-address">
+
+  <div>
+    <strong>Name:</strong>
+    {{ consigneeDetails.name }}
+  </div>
+
+  <div>
+    <strong>Address:</strong>
+    {{ consigneeDetails.address }}
+  </div>
+
+  <div>
+    <strong>Phone:</strong>
+
+    @for (phone of consigneeDetails.phones; track $index) {
+      <span>
+        {{ phone }}
       </span>
 
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter Air Waybill Number (e.g., EGX94820147)"
-      />
+      @if (!$last) {
+        ,
+      }
+    }
 
-      <button class="btn track-btn">
-        <i class="fa-solid fa-satellite-dish me-2"></i>
-        Track Shipment
-      </button>
+  </div>
+
+</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ================= Journey ================= -->
+
+    <div class="card-panel journey-panel">
+
+      <div class="journey-header">
+        <i class="bi bi-arrow-counterclockwise journey-header-icon"></i>
+        <span>Consignment Custody Checkpoint Journey Log</span>
+      </div>
+
+      <div class="journey-timeline">
+                @for (step of tracklistArray; track $index; let first = $first; let last = $last) {
+
+        <div class="journey-row">
+
+          <!-- Date -->
+          <div class="journey-date-col">
+            <div class="journey-date">
+              {{ step.Transdate }}
+            </div>
+
+            <div class="journey-time">
+              {{ step.TransTime }}
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="journey-rail">
+
+            <span
+              class="journey-dot"
+              [ngClass]="first ? 'dot-active' : 'dot-inactive'">
+            </span>
+
+            @if (!last) {
+              <span class="journey-line"></span>
+            }
+
+          </div>
+
+          <!-- Event Card -->
+          <div class="journey-card">
+
+            <div class="journey-card-top">
+
+              <span class="location-chip">
+                <i class="bi bi-geo-alt-fill"></i>
+                {{ step.Location }}
+              </span>
+
+              @switch (step.Status) {
+
+                @case ('POD') {
+                  <span class="status-badge badge-delivered">
+                    DELIVERED
+                  </span>
+                }
+
+                @case ('AH') {
+                  <span class="status-badge badge-facility">
+                    AT FACILITY
+                  </span>
+                }
+
+                @case ('OFD') {
+                  <span class="status-badge badge-transit">
+                    IN TRANSIT
+                  </span>
+                }
+
+                @case ('DF') {
+                  <span class="status-badge badge-transit">
+                    IN TRANSIT
+                  </span>
+                }
+
+                @default {
+                  <span class="status-badge badge-transit">
+                    {{ step.Status }}
+                  </span>
+                }
+
+              }
+
+            </div>
+
+            <div class="journey-remarks">
+              {{ step.Remarks }}
+            </div>
+
+          </div>
+
+        </div>
+
+        }
+
+      </div>
 
     </div>
 
   </div>
 
-  <!-- Empty State -->
+} @else {
+
   <div class="tracking-empty">
 
     <div class="empty-content">
@@ -55,15 +293,42 @@
         operational panel controls to fetch processing milestones.
       </p>
 
-      <!-- لما الباك يجهز اعرض الداتا هنا -->
-      <!--
-      @if (trackingData) {
-        // Tracking Timeline Here
-      }
-      -->
-
     </div>
 
   </div>
 
+}
+
 </div>
+
+
+ @if (popupOpen()) {
+
+<div class="popup-overlay" (click)="popupOpen.set(false)">
+
+  <div class="status-popup" (click)="$event.stopPropagation()">
+
+    <div class="status-popup-icon">
+      <i class="fa-solid fa-circle-exclamation"></i>
+    </div>
+
+    <div class="status-popup-content">
+      <h5>Status Not Found</h5>
+      <p>Status Not Found for This AWBNo.</p>
+    </div>
+
+    <button
+      class="status-popup-close"
+      (click)="popupOpen.set(false)">
+
+      <i class="fa-solid fa-xmark"></i>
+
+    </button>
+
+  </div>
+
+</div>
+
+}
+
+

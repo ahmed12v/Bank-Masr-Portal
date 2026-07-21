@@ -1,8 +1,8 @@
 export interface TrackingAWBReq {
-  UserName: string
-  Password: string
+  ActiveDataBase: string
+  AccountPWD: string
   AccountNo: string
-  TrackingAWB: string
+  TrackingNo: string
 }
 
 
