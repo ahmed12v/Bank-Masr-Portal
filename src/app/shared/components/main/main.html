@@ -13,8 +13,9 @@
 </div>
 
 
-<div class="custom-accordion">
-  
+<div class="custom-accordion ">
+                     <app-tracking></app-tracking>
+
   @for (section of sections; track section.id) {
 
     <div class="accordion-item">
@@ -44,25 +45,22 @@
         <div class="accordion-body">
 
           @switch (section.id) {
+       
             @case (0) {
-              <!-- tracking-->
-                   <app-tracking></app-tracking>
-            }
-            @case (1) {
               <!-- domastic-awb-greation -->
                 <app-domastic-awb-greation></app-domastic-awb-greation>
             }
-            @case (2) {
+            @case (1) {
               <!-- AWB Search Panel -->
                <app-awbsearch></app-awbsearch>
             }
 
-            @case (3) {
+            @case (2) {
               <!-- Customer Support -->
                <app-raise-compliant></app-raise-compliant>
             }
 
-            @case (4) {
+            @case (3) {
               <!-- Delivery Management -->
                <app-delivery-mangement></app-delivery-mangement>
             }

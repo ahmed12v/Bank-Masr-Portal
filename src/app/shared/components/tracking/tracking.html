@@ -1,69 +1,81 @@
-<div class="tracking-card">
+<div class="container  py-4">
 
-  <div class="tracking-header">
-    <div class="title-wrapper">
-      <div class="icon-box">
-        <i class="fa-solid fa-magnifying-glass-location"></i>
-      </div>
+  <div class="tracking-card  ">
 
-      <div>
-        <h2>Consignment Tracking Engine</h2>
-        <p>
-          Real-time lifecycle visibility for domestic and international air waybills
-        </p>
+    <div class="tracking-header bg-light rounded-3  ">
+      <div class="title-wrapper">
+        <div class="icon-box">
+          <i class="fa-solid fa-magnifying-glass-location"></i>
+        </div>
+
+        <div>
+          <h2>Consignment Tracking Engine</h2>
+          <p>
+            Real-time lifecycle visibility for domestic and international air waybills
+          </p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Search Box -->
-  <div class="tracking-search">
 
-    <div class="input-group custom-search">
+    <div class="tracking-body py-4">
+      <!-- Search Box -->
+      <div class="tracking-search  d-flex justify-content-center align-items-center rounded-3  mb-4 bg-dark">
 
-      <span class="input-group-text">
-        <i class="fa-solid fa-barcode"></i>
-      </span>
+        <div class="input-group custom-search">
 
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter Air Waybill Number (e.g., EGX94820147)"
-      />
+          <span class="input-group-text">
+            <i class="fa-solid fa-barcode"></i>
+          </span>
 
-      <button class="btn track-btn">
-        <i class="fa-solid fa-satellite-dish me-2"></i>
-        Track Shipment
-      </button>
+          <input type="text" class="form-control" placeholder="Enter Air Waybill Number (e.g., EGX94820147)" />
 
-    </div>
+          <button class="btn track-btn">
+            <i class="fa-solid fa-satellite-dish me-2"></i>
+            Track Shipment
+          </button>
 
-  </div>
-
-  <!-- Empty State -->
-  <div class="tracking-empty">
-
-    <div class="empty-content">
-
-      <div class="empty-icon">
-        <i class="fa-solid fa-location-crosshairs"></i>
+        </div>
       </div>
 
-      <h4>No Active Consignment Traced</h4>
 
-      <p>
-        Supply a targeted air waybill sequence number inside the top
-        operational panel controls to fetch processing milestones.
-      </p>
+      <!-- Empty State -->
+      <div class="tracking-empty d-flex justify-content-center align-items-center text-center rounded-3  ">
 
-      <!-- لما الباك يجهز اعرض الداتا هنا -->
-      <!--
+        <div class="empty-content">
+
+          <div class="empty-icon">
+            <i class="fa-solid fa-location-crosshairs"></i>
+          </div>
+
+          <h4>No Active Consignment Traced</h4>
+
+          <p>
+            Supply a targeted air waybill sequence number inside the top
+            operational panel controls to fetch processing milestones.
+          </p>
+
+          <!-- لما الباك يجهز اعرض الداتا هنا -->
+          <!--
       @if (trackingData) {
         // Tracking Timeline Here
       }
       -->
 
+        </div>
+
+      </div>
+
     </div>
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   </div>
-
 </div>

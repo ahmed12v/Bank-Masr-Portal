@@ -71,7 +71,9 @@
               [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
               (click)="togglePassword()"
            ></i>
-            @if (loginForm.get('UserPwd')?.errors&& loginForm.get('UserPwd')?.touched) {
+         
+        </div>
+           @if (loginForm.get('UserPwd')?.errors&& loginForm.get('UserPwd')?.touched) {
                     <div class="text-danger mt-1 small">
                           @if (loginForm.get('UserPwd')?.errors?.['required']) {
                                <span>password is required.</span>
@@ -80,7 +82,6 @@
                            
                     </div>
                  }
-        </div>
         </div>
        <button
   type="submit"

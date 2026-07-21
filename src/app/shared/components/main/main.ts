@@ -14,32 +14,32 @@ import { Tracking } from '../tracking/tracking';
 export class Main {
    sections = [
     
+    // {
+    //   id: 0,
+    //   title: "Tracking",
+    //   icon: "fa-solid fa-binoculars",
+    //   open: false,
+    // },
     {
       id: 0,
-      title: "Tracking",
-      icon: "fa-solid fa-binoculars",
-      open: false,
-    },
-    {
-      id: 1,
       title: "Domestic AirwayBill Creation",
       icon: "fa-solid fa-truck",
       open: false,
     },
     {
-      id: 2,
+      id: 1,
       title: "AWB Search Panel",
       icon: "fa-solid fa-truck",
       open: false,
     },
     {
-      id: 3,
+      id: 2,
       title: "Customer Support",
       icon: "fa-solid fa-user",
       open: false,
     },
     {
-      id: 4,
+      id: 3,
       title: "Delivery Management",
       icon: "fa-solid fa-credit-card",
       open: false,
