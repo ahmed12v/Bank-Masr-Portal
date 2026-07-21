@@ -10,61 +10,61 @@
   </div>
 
   <!-- Filters Card -->
+   <form [formGroup]="CompliantSearchForm" (ngSubmit)="SearchNow()">
   <div class="card-panel filters-panel">
     <div class="row gx-3 gy-3">
 
       <div class="col-12 col-sm-6 col-lg-2">
         <label class="field-label" for="dateFrom">Date From</label>
-        <input type="date" id="dateFrom" class="form-control field-input" value="2026-07-21">
+        <input formControlName="DateFrom" type="date" id="dateFrom" class="form-control field-input">
       </div>
 
       <div class="col-12 col-sm-6 col-lg-2">
         <label class="field-label" for="dateTo">Date To</label>
-        <input type="date" id="dateTo" class="form-control field-input" value="2026-07-21">
+        <input formControlName="DateTo" type="date" id="dateTo" class="form-control field-input">
       </div>
 
       <div class="col-12 col-sm-6 col-lg-2">
         <label class="field-label" for="awbNo">AWB / Booking No.</label>
-        <input type="text" id="awbNo" class="form-control field-input" placeholder="Tracking code ID">
+        <input formControlName="AWBno"  type="text" id="awbNo" class="form-control field-input" placeholder="Tracking code ID">
       </div>
 
       <div class="col-12 col-sm-6 col-lg-2">
         <label class="field-label" for="statusCode">Internal Status Code</label>
-        <input type="text" id="statusCode" class="form-control field-input" placeholder="E.G., CC, OP">
+        <input formControlName="InternalStatusCode" type="text" id="statusCode" class="form-control field-input" placeholder="E.G., CC, OP">
       </div>
 
       <div class="col-12 col-sm-6 col-lg-2">
         <label class="field-label" for="lifecycleStatus">Lifecycle Status</label>
-        <select id="lifecycleStatus" class="form-select field-input">
+        <select formControlName="LifecycleStatus" id="lifecycleStatus" class="form-select field-input">
           <option>All Tickets</option>
           <option>Open</option>
-          <option>In Progress</option>
-          <option>Resolved</option>
           <option>Closed</option>
         </select>
       </div>
 
       <div class="col-12 col-sm-6 col-lg-2">
         <label class="field-label">Active Queue Metrics</label>
-        <div class="metrics-box">0</div>
+        <div class="metrics-box">{{complaints.length}}</div>
       </div>
 
       <div class="col-12 col-sm-6 col-lg-3">
+        
         <label class="field-label" for="regFrom">Reg Sequence From</label>
-        <input type="text" id="regFrom" class="form-control field-input" placeholder="Starting index">
+        <input formControlName="RegSequenceFrom" type="text" id="regFrom" class="form-control field-input" placeholder="Starting index">
       </div>
 
       <div class="col-12 col-sm-6 col-lg-3">
         <label class="field-label" for="regTo">Reg Sequence To</label>
-        <input type="text" id="regTo" class="form-control field-input" placeholder="Ending index">
+        <input formControlName="RegSequenceTo" type="text" id="regTo" class="form-control field-input" placeholder="Ending index">
       </div>
 
       <div class="col-12 col-lg-6 d-flex align-items-end justify-content-end gap-2 action-buttons">
-        <button type="button" class="btn btn-reset">
+        <button type="button" class="btn btn-reset" (click)="resetForm()">
           <i class="bi bi-arrow-counterclockwise"></i>
           Reset
         </button>
-        <button type="button" class="btn btn-query">
+        <button type="submit"  class="btn btn-query">
           <i class="bi bi-search"></i>
           Query Databanks
         </button>
@@ -72,6 +72,7 @@
 
     </div>
   </div>
+  </form>
 
   <!-- Results Card -->
   <div class="card-panel results-panel">
@@ -89,15 +90,204 @@
             <th>Lifecycle Status</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- Data rows render here once results are returned -->
-          <!-- <tr *ngFor="let row of results">...</tr> -->
-        </tbody>
+      <tbody>
+
+@for (item of complaints; track item.CoReg) {
+
+<tr>
+
+  <td>
+    {{ item.CoReg }}
+  </td>
+
+
+  <td>
+    {{ item.ComplaintDate }}
+  </td>
+
+
+  <td>
+    {{ item.AirwayBillNo }}
+  </td>
+
+
+  <td>
+
+    <div 
+      class="complaint-text"
+      (click)="openComplaint(item)">
+
+      {{ item.Complaint.length > 80 
+        ? (item.Complaint | slice:0:80) + '...'
+        : item.Complaint }}
+
+    </div>
+
+  </td>
+
+
+  <td>
+    {{ item.RootCause.trim() }}
+  </td>
+
+
+  <td>
+
+  @if (item.Status.trim().toLowerCase().includes('closed')) {
+
+  <span class="status-badge close">
+    Closed
+  </span>
+
+} @else {
+
+  <span class="status-badge open">
+    Open
+  </span>
+
+}
+
+  </td>
+
+
+</tr>
+
+}
+
+</tbody>
       </table>
+      @if(showComplaintPopup()) {
+
+
+<div class="popup-overlay"
+(click)="closeComplaintPopup()">
+
+
+<div class="complaint-popup"
+(click)="$event.stopPropagation()">
+
+
+
+<button
+class="popup-close"
+(click)="closeComplaintPopup()">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+
+
+<h4>
+Complaint Details
+</h4>
+
+
+
+<div class="details-item">
+
+<strong>
+Complaint No:
+</strong>
+
+{{selectedComplaint.CoReg}}
+
+</div>
+
+
+
+<div class="details-item">
+
+<strong>
+Airway Bill:
+</strong>
+
+{{selectedComplaint.AirwayBillNo}}
+
+</div>
+
+
+
+<div class="details-item">
+
+<strong>
+Date:
+</strong>
+
+{{selectedComplaint.ComplaintDate}}
+
+</div>
+
+
+
+<div class="details-item">
+
+<strong>
+Complaint:
+</strong>
+
+
+<p>
+{{selectedComplaint.Complaint}}
+</p>
+
+
+</div>
+
+
+
+<div class="details-item">
+
+<strong>
+Root Cause:
+</strong>
+
+{{selectedComplaint.RootCause.trim()}}
+
+</div>
+
+
+
+
+<div class="details-item">
+
+<strong>
+Status:
+</strong>
+
+
+@if(selectedComplaint.Status.trim().toLowerCase().includes('closed')) {
+
+<span class="status-badge close">
+Closed
+</span>
+
+}
+@else {
+
+<span class="status-badge open">
+Open
+</span>
+
+}
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+}
     </div>
 
     <!-- Empty state (shown when there are no results) -->
-    <div class="empty-state">
+     @if (isEmpty()) {
+       <div class="empty-state">
       <i class="bi bi-clipboard2 empty-icon"></i>
       <p class="empty-title">
         No active complaint parameters traced inside this ledger
@@ -108,7 +298,37 @@
         control panel layout grid , then execute query.
       </p>
     </div>
+     }
+   
 
   </div>
 
 </div>
+ @if (popupOpen()) {
+
+<div class="popup-overlay" (click)="popupOpen.set(false)">
+
+  <div class="status-popup" (click)="$event.stopPropagation()">
+
+    <div class="status-popup-icon">
+      <i class="fa-solid fa-circle-exclamation"></i>
+    </div>
+
+    <div class="status-popup-content">
+      <h5> Not Found</h5>
+      <p>Records not Found.</p>
+    </div>
+
+    <button
+      class="status-popup-close"
+      (click)="popupOpen.set(false)">
+
+      <i class="fa-solid fa-xmark"></i>
+
+    </button>
+
+  </div>
+
+</div>
+
+}
