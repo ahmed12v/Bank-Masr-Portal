@@ -7,6 +7,13 @@ export interface AirwayBillPDFFormatReq {
   UserName: string
 }
 
+
+
+export interface CreateAWBRes {
+  AirwayBillNumber: string
+  Code: number
+  Description: string
+}
 export interface CreateAirwayBill {
   UserName: string
   Password: string

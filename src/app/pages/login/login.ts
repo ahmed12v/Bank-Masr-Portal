@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
-import { LoginService } from '../../core/services/auth/login/Login';
-import { Router } from '@angular/router';
-import { StorageService } from '../../core/services/auth/storgeENC';
+import { LoginService } from '../../core/services/auth/login/LoginService';
 
 @Component({
   selector: 'app-login',
@@ -41,6 +40,11 @@ export class Login {
     this.isLoading.set(true);
     console.log('isLoading true')
     this._loginService.login(this.loginForm.value)
+      .pipe(
+        finalize(() => {
+          this.isLoading.set(false);
+        })
+      )
       .subscribe({
         next: (res) =>{
           this.isLoading.set(false);
