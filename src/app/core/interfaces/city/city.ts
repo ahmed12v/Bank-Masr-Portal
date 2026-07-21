@@ -1,6 +1,7 @@
 export interface CityListReq {
-  UserName: string
+  Country: string
   Password: string
+  UserName: string
 }
 
 

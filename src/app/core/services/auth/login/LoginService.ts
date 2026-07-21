@@ -7,7 +7,7 @@ import { LoginRequest, LoginResponse } from '../../../interfaces/Login/login';
 @Injectable({
   providedIn: 'root',
 })
-export class LoginService{
+export class Login {
   private api = inject(ApiService);
     private apiUrl = `${environment.baseUrl}`;
 
