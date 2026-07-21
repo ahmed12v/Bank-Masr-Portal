@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LoginService } from '../../core/services/login';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
+import { LoginService } from '../../core/services/auth/login/LoginService';
 
 @Component({
   selector: 'app-login',
@@ -37,7 +37,7 @@ export class Login {
   if (this.loginForm.valid) {
     this.isLoading.set(true);
     console.log('isLoading true')
-    this._loginService.SubmitLogin(this.loginForm.value)
+    this._loginService.login(this.loginForm.value)
       .pipe(
         finalize(() => {
           this.isLoading.set(false);
