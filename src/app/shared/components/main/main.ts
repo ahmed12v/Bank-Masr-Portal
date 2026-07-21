@@ -19,7 +19,7 @@ export class Main {
       id: 0,
       title: "Tracking",
       icon: "fa-solid fa-binoculars",
-      open: false,
+      open: true,
     },
     {
       id: 1,
