@@ -62,4 +62,10 @@ export class Main {
       }
     });
   }
+
+  openRaiseComplaint() {
+  this.sections.forEach(section => {
+    section.open = section.id === 3;
+  });
+}
 }

@@ -1,13 +1,22 @@
 <div class="audit-desk">
 
   <!-- Header Card -->
-  <div class="card-panel header-panel">
-    <h1 class="page-title">Complaint Resolution Audit Desk</h1>
-    <p class="page-subtitle">
-      Query historical tickets,check resolution paths,and
-      export performance reports
-    </p>
+ <div class="card-panel header-panel">
+  <div class="header-content">
+    <div>
+      <h1 class="page-title">Complaint Resolution Audit Desk</h1>
+      <p class="page-subtitle">
+        Query historical tickets, check resolution paths, and
+        export performance reports
+      </p>
+    </div>
+
+    <button class="add-btn" (click)="opennComplaint()">
+      <i class="fa-solid fa-plus"></i>
+       <span>Add Complaint</span>
+    </button>
   </div>
+</div>
 
   <!-- Filters Card -->
    <form [formGroup]="CompliantSearchForm" (ngSubmit)="SearchNow()">

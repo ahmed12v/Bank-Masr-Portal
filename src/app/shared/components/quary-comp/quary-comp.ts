@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject, signal } from "@angular/core";
+import { ChangeDetectorRef, Component, EventEmitter, inject, Output, signal } from "@angular/core";
 import { Complaint } from "../../../core/interfaces/compliant/qaury";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { QuaryService } from "../../../core/services/compliant/quarycomplian";
@@ -35,6 +35,7 @@ export class QuaryComp {
     RegSequenceFrom: new FormControl(""),
     RegSequenceTo: new FormControl(""),
   });
+ //#region  call api
 
   SearchNow() {
    // this.complaints = [];
@@ -124,7 +125,9 @@ where 1=1
         },
       });
   }
+//#endregion
 
+//#region formClear
   resetForm() {
     this.CompliantSearchForm.reset({
       DataBase: "integraontrack",
@@ -144,6 +147,9 @@ where 1=1
     this.complaints = [];
     this.isEmpty.set(false);
   }
+  //#endregion
+
+  //#region detials Popup
   selectedComplaint!: Complaint;
 
   showComplaintPopup = signal(false);
@@ -156,4 +162,13 @@ where 1=1
   closeComplaintPopup() {
     this.showComplaintPopup.set(false);
   }
+  //#endregion
+
+//#region goToRaise
+@Output() createComplaint = new EventEmitter<void>();
+
+opennComplaint() {
+  this.createComplaint.emit();
+}
+
 }
