@@ -83,12 +83,15 @@ export class Tracking {
     this.isEmpty = false;
     this.trackInfooo = null;
     this.tracklistArray = [];
-    const trackAwbNum = this.trackFormSend.value.TrackingNo?.trim();
-        if (trackAwbNum) {
-           console.log('NEW AWB:', trackAwbNum);
-           this._awbStaeService.set(trackAwbNum);
-           
+      const trackAwbNum = this.trackFormSend.value.TrackingNo?.trim();
+                if (trackAwbNum) {
+                  console.log('NEW AWB:', trackAwbNum);
+                  this._awbStaeService.set(trackAwbNum);
+                  console.log('STATE VALUE:', this._awbStaeService.awbNum());
+                  
+          
           }
+   
     const userCrad = this._storgeCradintioal.getItem("userCredentials");
 
     this.trackFormSend.patchValue({
@@ -116,6 +119,8 @@ export class Tracking {
           this.isEmpty = false;
           this.trackInfooo = res;
           this.tracklistArray = [...res.TrackInfo[0].trackList];
+          
+              
            
           
 

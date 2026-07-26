@@ -1,7 +1,6 @@
 /* ===== Layout shell ===== */
 .audit-desk {
   width: 100%;
-  min-height: 100vh;
   padding: 24px;
   background-color: #eef1f6;
   box-sizing: border-box;

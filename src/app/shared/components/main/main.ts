@@ -1,10 +1,11 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { AWBsearch } from '../awbsearch/awbsearch';
 import { DeliveryMangement } from '../delivery-mangement/delivery-mangement';
 import { DomasticAwbGreation } from '../domastic-awb-greation/domastic-awb-greation';
 import { RaiseCompliant } from '../raise-compliant/raise-compliant';
 import { Tracking } from '../tracking/tracking';
 import { QuaryComp } from '../quary-comp/quary-comp';
+import { StateService } from '../../../core/State/awbState';
 
 @Component({
   selector: 'app-main',
@@ -13,6 +14,9 @@ import { QuaryComp } from '../quary-comp/quary-comp';
   styleUrl: './main.css',
 })
 export class Main {
+  _awbstae=inject(StateService)
+  selectedAwb = '';
+
    sections = [
     
     {
@@ -66,12 +70,14 @@ export class Main {
    @ViewChild('raiseComplaintSection')
   raiseComplaintSection!: ElementRef;
 
-  openRaiseComplaint() {
+  openRaiseComplaint(awb: string) {
+    this.selectedAwb = awb; 
 
     this.raiseComplaintSection.nativeElement.scrollIntoView({
       behavior: 'smooth',
       block: 'start'
     });
-
-  }
+ 
+ }
+  
 }

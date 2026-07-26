@@ -12,13 +12,13 @@
             </div>
         </div>
     </div>
-
+    <form [formGroup]="complaintForm">
     <div class="row g-3">
-
+    
         <!-- LEFT SIDE -->
         <div class="col-lg-6">
-
-            <div class="card custom-card">
+      
+          <div class="card custom-card">
 
                 <div class="card-header dark-header">
                     Complainant Contact Context
@@ -74,13 +74,15 @@
                 </div>
 
             </div>
+      
 
         </div>
 
         <!-- RIGHT SIDE -->
-        <div class="col-lg-6">
-
-            <div class="card custom-card">
+          
+        <div class="col-lg-6" formGroupName="ComplaintData">
+           
+                <div class="card custom-card">
 
                 <div class="card-header orange-header">
                     Investigation & Routing Level Actions
@@ -92,7 +94,7 @@
 
                         <div class="col-md-6">
                             <label>Associated Airwaybill No (AWB)</label>
-                            <input type="text" class="form-control" placeholder="AWB Reference Identification">
+                            <input type="text" formControlName="cl_AWBNO" readonly  class="form-control" placeholder="AWB Reference Identification">
                         </div>
 
                         <div class="col-md-6">
@@ -129,10 +131,15 @@
                 </div>
 
             </div>
+            
+
+            
 
         </div>
+        
 
     </div>
+    </form>
 
     <!-- BUTTONS -->
     <div class="action-bar mt-3">

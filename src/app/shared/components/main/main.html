@@ -18,14 +18,14 @@
  
               <app-tracking></app-tracking>
             
-              <app-quary-comp (createComplaint)="openRaiseComplaint()"></app-quary-comp>
+              <app-quary-comp (createComplaint)="openRaiseComplaint($event)"></app-quary-comp>
             
               <app-awbsearch></app-awbsearch>
             
               <app-delivery-mangement></app-delivery-mangement>
 
               <div #raiseComplaintSection>
-                  <app-raise-compliant ></app-raise-compliant>
+                  <app-raise-compliant></app-raise-compliant>
               </div>
           
               

@@ -14,16 +14,18 @@ import { StateService } from "../../../core/State/awbState";
 })
 export class QuaryComp {
   constructor(private _awbsate:StateService){
+     console.log('QUERY CONSTRUCTOR:', this._awbsate.awbNum());
     effect(()=>{
       const awb = this._awbsate.awbNum()
+         console.log('EFFECT AWB:', awb);
       if(!awb)return
       this.CompliantSearchForm.patchValue({
         AWBno:awb
       })
-      console.log(
-      'FORM AWB:',
-      this.CompliantSearchForm.get('AWBno')?.value
-    );
+    //   console.log(
+    //   'FORM AWB:',
+    //   this.CompliantSearchForm.get('AWBno')?.value
+    // );
       this.SearchNow()
     })
 
@@ -119,7 +121,6 @@ where 1=1
     } else if (form.LifecycleStatus === "Close") {
       sql += ` and Status = 'CC'`;
     }
-
     this.CompliantSearchForm.patchValue({
       UserID: userCrad.UserID,
       UserPwd: userCrad.UserPWD,
@@ -128,14 +129,12 @@ where 1=1
     });
 
     console.log(sql);
-
     this._compliantService
       .getQuery(this.CompliantSearchForm.getRawValue())
       .subscribe({
         next: (res) => {
            this.complaints = [];
-  this.isEmpty.set(false);
-
+           this.isEmpty.set(false);
 
   if (
     res.Code === "-1" ||
@@ -145,11 +144,8 @@ where 1=1
   ) {
 
     this.complaints = [];
-
     this.isEmpty.set(true);
-
     this.popupOpen.set(true);
-
     this.cdr.detectChanges();
 
     return;
@@ -164,10 +160,13 @@ where 1=1
   this.isEmpty.set(false);
 
   this.cdr.detectChanges();
+           //this._awbsate.clear()
         },
         error: (err) => {
           console.log(err);
+           //this._awbsate.clear()
         },
+       
       });
   }
 //#endregion
@@ -210,10 +209,14 @@ where 1=1
   //#endregion
 
 //#region goToRaise
-@Output() createComplaint = new EventEmitter<void>();
+@Output() createComplaint = new EventEmitter<string>();
 
 opennComplaint() {
-  this.createComplaint.emit();
+  
+   const awb = this._awbsate.awbNum();
+  //console.log('AWB:', awb);
+  this.createComplaint.emit(awb || '');
+  
 }
 
 }

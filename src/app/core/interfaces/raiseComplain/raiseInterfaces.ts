@@ -1,51 +1,52 @@
-export interface Complaint {
-  CoReg: string;
-  ComplaintDate: string;
-  Complaint: string;
-  AirwayBillNo: string;
-  Remarks: string;
-  RootCause: string;
-  Status: string;
-}
-
-export interface ComplaintResponse {
-  Code: string;
-  Description: string;
-  JasonString: string;
-}
-
-export interface ComplaintResponseParsed {
-  Code: string;
-  Description: string;
-  JasonString: Complaint[];
-}
-
- export interface queryComeٍSearch {
-    DataBase:string,
-    DateFrom:string,
-    DateTo:string,
-    SqlString:string,
+export interface GetNewCompainDetails{
+    AccountNo:string,
+    CustomerCode:string,
     UserID:string,
-    AWBno:string,
-    InternalStatusCode:string,
-    LifecycleStatus:string,
-    RegSequenceFrom:string,
-    RegSequenceTo:string,
- }
-
- export interface GetAccountDetials{
-  AccountNo:string,
-  UserID:string,
-  UserPwd:string
- }
- export interface RaiseResponse {
+    UserPwd:string,
+}
+export interface GetNewCompainDetailsResoponse{
+    BookingNo:string,
+    Code:string,
+    Message:string,
+}
+//
+export interface MasterListSelector{
+    MasterType:string,
+    UserId:string,
+    UserPwd:string,
+}
+export interface MasterListSelectorResponse{
   Code: string
-  CustomerDetails: UserAccDetials
+  Description: string
+  Response: ResponseCome[]
+}
+export interface ResponseCome {
+  cl_Amt1: any
+  cl_Amt2: any
+  cl_Category: any
+  cl_CodeID: string
+  cl_CodeName: string
+  cl_CodeType: any
+  cl_Desc1: any
+  cl_Desc2: any
+  cl_Desc3: any
+  cl_EffectDate: any
+  cl_IsActive: any
+  cl_Note: any
+}
+//
+export interface GetAccountDetials{
+    AccountNo:string,
+    UserID:string,
+    UserPwd:string,
+}
+export interface GetAccountDetialsResponse{
+  Code: string
+  CustomerDetails: CustomerDetails
   Description: string
 }
-
-export interface UserAccDetials {
-  cl_AWBNoFr: any
+export interface CustomerDetails{
+ cl_AWBNoFr: any
   cl_AWBNoTo: any
   cl_AccCode: string
   cl_AccType: any
@@ -100,3 +101,5 @@ export interface UserAccDetials {
   cl_VAT: any
   cl_iConnect: any
 }
+
+

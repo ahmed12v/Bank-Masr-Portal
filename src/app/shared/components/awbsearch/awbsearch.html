@@ -329,31 +329,102 @@
 
         <tbody>
 
-          <!-- Data Here -->
+  @if (isEmpty()) {
 
-          <tr>
+    <tr>
+      <td colspan="9">
 
-            <td colspan="9">
+        <div class="empty-state">
 
-              <div class="empty-state">
+          <h5 class="empty-title">
+            No shipment records found
+          </h5>
 
-                <!-- <i class="fa-regular fa-folder-open empty-icon"></i> -->
+          <p class="empty-subtitle">
+            Configure the required search filters then execute the query.
+          </p>
 
-                <h5 class="empty-title">
-                  No shipment records found
-                </h5>
+        </div>
 
-                <p class="empty-subtitle">
-                  Configure the required search filters then execute the query.
-                </p>
+      </td>
+    </tr>
 
-              </div>
+  }
+  @else {
 
-            </td>
+    @for (item of awbSearch; track $index) {
 
-          </tr>
+      <tr>
 
-        </tbody>
+        <td>
+          {{item.PickupDate}}
+        </td>
+
+
+        <td>
+          <span class="awb-number">
+            {{item.AWBNo}}
+          </span>
+        </td>
+
+
+        <td>
+          {{item.ShipperRef || '-'}}
+        </td>
+
+
+        <td>
+          {{item.Shipper || '-'}}
+        </td>
+
+
+        <td>
+          {{item.Consignee || '-'}}
+        </td>
+
+
+        <td>
+          <span class="badge-location">
+            {{item.Origin}}
+          </span>
+        </td>
+
+
+        <td>
+          <span class="badge-location">
+            {{item.Destination}}
+          </span>
+        </td>
+
+
+        <td>
+          {{item.Weight}} KG
+        </td>
+
+
+        <td>
+
+          <span 
+          class="status-badge"
+          [class.delivered]="item.Status === 'POD'"
+          [class.transit]="item.Status === 'IN TRANSIT'"
+          [class.pending]="item.Status === 'PENDING'"
+          >
+
+            {{item.Status}}
+
+          </span>
+
+        </td>
+
+
+      </tr>
+
+    }
+
+  }
+
+</tbody>
 
       </table>
 
