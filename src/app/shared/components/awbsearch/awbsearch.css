@@ -1,59 +1,477 @@
+/* =========================================================
+   Layout
+========================================================= */
+
+.audit-desk {
+  width: 100%;
+  min-height: 100vh;
+  padding: 24px;
+  background: #eef1f6;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   Shared Cards
+========================================================= */
+
+.card-panel {
+  background: #ffffff;
+  border: 1px solid #e4e8ef;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   Header
+========================================================= */
+
+.header-panel {
+  padding: 22px 28px;
+  margin-bottom: 16px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 .page-title {
-  color: #1d3557;
+  margin: 0 0 6px;
+  font-size: 1.5rem;
   font-weight: 700;
+  color: #1c2430;
 }
 
-.search-icon {
-  color: #f45b22;
-  font-size: 30px;
+.page-subtitle {
+  margin: 0;
+  color: #6b7280;
+  font-size: .9rem;
+  line-height: 1.5;
 }
 
-.card {
-  border-radius: 18px;
+/* =========================================================
+   Search Filters
+========================================================= */
+
+.filters-panel {
+  padding: 22px 28px;
+  margin-bottom: 16px;
 }
 
-.form-label {
-  font-size: 13px;
+/* =========================================================
+   Labels
+========================================================= */
+
+.field-label {
+  display: block;
+  margin-bottom: 8px;
+
+  font-size: .72rem;
   font-weight: 700;
-  color: #344767;
+
+  text-transform: uppercase;
+  letter-spacing: .04em;
+
+  color: #4b5563;
 }
 
-.custom-input {
-  height: 48px;
-  border-radius: 10px;
-  border: 1px solid #dce1e7;
-}
+/* =========================================================
+   Inputs
+========================================================= */
 
-.custom-input:focus {
-  box-shadow: none;
-  border-color: #f45b22;
-}
-
-.action-btn {
+.field-input {
+  width: 100%;
   height: 42px;
-  border-radius: 10px;
-}
 
-.execute-btn {
-  background: #f45b22;
-  color: white;
-  border-radius: 10px;
-  min-width: 180px;
-}
+  padding: 9px 12px;
 
-.execute-btn:hover {
-  background: #e04f20;
-  color: white;
-}
+  border: 1px solid #d7dce4;
+  border-radius: 4px;
 
-.table thead th {
   background: #fff;
-  color: #344767;
+
+  color: #1c2430;
+  font-size: .9rem;
+
+  transition: .2s;
+}
+
+.field-input::placeholder {
+  color: #a7adb8;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #ea5b23;
+  box-shadow: 0 0 0 .15rem rgba(234,91,35,.15);
+}
+
+select.field-input {
+  cursor: pointer;
+}
+
+/* =========================================================
+   Buttons
+========================================================= */
+
+.add-btn,
+.btn-query {
+
+  border: none;
+
+  height: 42px;
+
+  padding: 10px 22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border-radius: 4px;
+
+  white-space: nowrap;
+
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 600;
+
+  background: linear-gradient(
+    180deg,
+    #f4703f 0%,
+    #ef5b2a 100%
+  );
+
+  transition: .25s;
+}
+
+.add-btn:hover,
+.btn-query:hover {
+
+  background: linear-gradient(
+    180deg,
+    #ef5b2a 0%,
+    #e64f1c 100%
+  );
+
+  color: #fff;
+}
+
+.add-btn:active,
+.btn-query:active {
+  transform: scale(.98);
+}
+
+.add-btn:focus,
+.btn-query:focus {
+
+  outline: none;
+
+  box-shadow: 0 0 0 4px rgba(234,91,35,.20);
+}
+
+/* =========================================================
+   Secondary Button
+========================================================= */
+
+.btn-reset {
+
+  border: 1px solid #d7dce4;
+
+  background: #fff;
+
+  color: #374151;
+
+  height: 42px;
+
+  padding: 10px 20px;
+
+  border-radius: 4px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  white-space: nowrap;
+
+  font-size: .9rem;
+  font-weight: 600;
+
+  transition: .2s;
+}
+
+.btn-reset:hover {
+  background: #f5f6f8;
+}
+
+/* =========================================================
+   Bootstrap Overrides
+========================================================= */
+
+.table {
+  margin-bottom: 0;
+}
+
+button i {
+  font-size: 15px;
+}
+/* =========================================================
+   Results Panel
+========================================================= */
+
+.results-panel {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* =========================================================
+   Table
+========================================================= */
+
+.results-table {
+  width: 100%;
+}
+
+.results-table thead th {
+
+  background: #f5f6f8;
+
+  color: #4b5563;
+
+  font-size: .72rem;
   font-weight: 700;
-  padding: 18px;
+
+  text-transform: uppercase;
+  letter-spacing: .04em;
+
+  padding: 16px 28px;
+
+  border-bottom: 1px solid #e4e8ef;
+
+  white-space: nowrap;
+}
+
+.results-table tbody td {
+
+  padding: 14px 28px;
+
+  font-size: .88rem;
+
+  color: #1c2430;
+
+  vertical-align: middle;
+
+  border-bottom: 1px solid #eef0f4;
+
+  transition: .2s;
+}
+
+.results-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.results-table tbody tr:hover {
+  background: #fafbfc;
+}
+
+/* =========================================================
+   AWB Number
+========================================================= */
+
+.awb-number {
+
+  color: #ea5b23;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.awb-number:hover {
+  color: #d6491a;
+}
+
+/* =========================================================
+   Origin / Destination Badge
+========================================================= */
+
+.badge-location {
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 48px;
+
+  padding: 4px 10px;
+
+  border-radius: 20px;
+
+  background: #eef2fb;
+
+  color: #3b6ec7;
+
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+/* =========================================================
+   Shipment Status
+========================================================= */
+
+.status-badge {
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 5px 14px;
+
+  border-radius: 20px;
+
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+.status-badge.delivered {
+
+  background: #dcfce7;
+
+  color: #15803d;
+}
+
+.status-badge.transit {
+
+  background: #dbeafe;
+
+  color: #2563eb;
+}
+
+.status-badge.pending {
+
+  background: #fef3c7;
+
+  color: #b45309;
+}
+
+.status-badge.cancelled {
+
+  background: #fee2e2;
+
+  color: #b91c1c;
+}
+
+/* =========================================================
+   Empty State
+========================================================= */
+
+.empty-state {
+
+  padding: 70px 24px;
+
+  text-align: center;
 }
 
 .empty-icon {
-  font-size: 60px;
-  color: #7b8794;
+
+  display: block;
+
+  margin-bottom: 18px;
+
+  font-size: 2.4rem;
+
+  color: #9aa1ac;
+}
+
+.empty-title {
+
+  margin: 0 0 8px;
+
+  color: #374151;
+
+  font-size: .95rem;
+
+  font-weight: 600;
+}
+
+.empty-subtitle {
+
+  margin: 0;
+
+  color: #9aa1ac;
+
+  font-size: .82rem;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   Responsive
+========================================================= */
+
+@media (max-width: 991.98px) {
+
+  .header-content {
+
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .add-btn,
+  .btn-reset {
+
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .btn-query {
+
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 575.98px) {
+
+  .audit-desk {
+    padding: 14px;
+  }
+
+  .header-panel,
+  .filters-panel {
+
+    padding: 18px;
+  }
+
+  .page-title {
+
+    font-size: 1.25rem;
+  }
+
+  .results-table thead th,
+  .results-table tbody td {
+
+    padding: 12px 14px;
+  }
+
+  .empty-state {
+
+    padding: 48px 16px;
+  }
+
+  .empty-icon {
+
+    font-size: 2rem;
+  }
+
 }

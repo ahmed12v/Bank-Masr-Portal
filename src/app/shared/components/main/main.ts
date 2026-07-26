@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AWBsearch } from '../awbsearch/awbsearch';
 import { DeliveryMangement } from '../delivery-mangement/delivery-mangement';
 import { DomasticAwbGreation } from '../domastic-awb-greation/domastic-awb-greation';
@@ -8,7 +8,7 @@ import { QuaryComp } from '../quary-comp/quary-comp';
 
 @Component({
   selector: 'app-main',
-  imports: [AWBsearch , DeliveryMangement , DomasticAwbGreation , RaiseCompliant , Tracking ,QuaryComp],
+  imports: [AWBsearch , DeliveryMangement  , RaiseCompliant , Tracking ,QuaryComp],
   templateUrl: './main.html',
   styleUrl: './main.css',
 })
@@ -63,9 +63,15 @@ export class Main {
     });
   }
 
+   @ViewChild('raiseComplaintSection')
+  raiseComplaintSection!: ElementRef;
+
   openRaiseComplaint() {
-  this.sections.forEach(section => {
-    section.open = section.id === 3;
-  });
-}
+
+    this.raiseComplaintSection.nativeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+
+  }
 }

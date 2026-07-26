@@ -1,237 +1,358 @@
-<div class="container-fluid py-4">
+<div class="audit-desk">
 
-  <!-- Header -->
-  <div class="card shadow-sm border-0 rounded-4 p-4 mb-4">
+  <!-- =========================================================
+       Header
+  ========================================================== -->
 
-    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+  <div class="card-panel header-panel">
 
-      <div class="d-flex align-items-center gap-3">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <h2 class="mb-0 page-title">AWB Search Panel</h2>
+    <div class="header-content">
+
+      <div>
+
+        <h2 class="page-title">
+          AWB Search Panel
+        </h2>
+
+        <p class="page-subtitle">
+          Search shipment information using advanced filters and export the results when needed.
+        </p>
+
       </div>
 
       <div class="d-flex gap-2 flex-wrap">
-        <button class="btn btn-light action-btn">
-          <i class="fa-regular fa-file-excel me-2"></i>
+
+        <button type="button" class="btn-reset">
+          <i class="fa-solid fa-rotate-right"></i>
+          Reset Display
+        </button>
+
+        <button type="button" class="add-btn">
+          <i class="fa-regular fa-file-excel"></i>
           Export Matrix
         </button>
 
-        <button class="btn btn-light action-btn">
-          <i class="fa-solid fa-rotate-right me-2"></i>
-          Reset Display
-        </button>
       </div>
 
     </div>
 
   </div>
 
-  <!-- Search Form -->
-  <div class="card shadow-sm border-0 rounded-4 p-4 mb-4">
+  <!-- =========================================================
+       Search Filters
+  ========================================================== -->
+
+  <div class="card-panel filters-panel d-none">
 
     <div class="row g-4">
 
       <div class="col-lg-3 col-md-6">
-        <label class="form-label">DATE FROM</label>
-        <input type="date" class="form-control custom-input">
+
+        <label class="field-label">
+          Date From
+        </label>
+
+        <input
+          type="date"
+          class="field-input">
+
       </div>
 
       <div class="col-lg-3 col-md-6">
-        <label class="form-label">DATE TO</label>
-        <input type="date" class="form-control custom-input">
+
+        <label class="field-label">
+          Date To
+        </label>
+
+        <input
+          type="date"
+          class="field-input">
+
       </div>
 
       <div class="col-lg-3 col-md-6">
-        <label class="form-label">SHIPPER ACCOUNT NAME</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="Search by Shipper Name">
+
+        <label class="field-label">
+          Shipper Account Name
+        </label>
+
+        <input
+          type="text"
+          class="field-input"
+          placeholder="Search by shipper name">
+
       </div>
 
       <div class="col-lg-3 col-md-6">
-        <label class="form-label">CONSIGNEE NAME</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="Search by Consignee">
-      </div>
 
-      <!-- Row 2 -->
-      <div class="col-lg-3 col-md-6">
-        <label class="form-label">AWB RANGE FROM</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="e.g. AWB001">
-      </div>
+        <label class="field-label">
+          Consignee Name
+        </label>
 
-      <div class="col-lg-3 col-md-6">
-        <label class="form-label">AWB RANGE TO</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="e.g. AWB100">
+        <input
+          type="text"
+          class="field-input"
+          placeholder="Search by consignee">
+
       </div>
 
       <div class="col-lg-3 col-md-6">
-        <label class="form-label">SHIPMENT REFERENCE</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="Ref Tracking Code">
+
+        <label class="field-label">
+          AWB Range From
+        </label>
+
+        <input
+          type="text"
+          class="field-input"
+          placeholder="AWB0001">
+
       </div>
 
       <div class="col-lg-3 col-md-6">
-        <label class="form-label">BOOKING REFERENCE NUMBER</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="Booking Ref No">
+
+        <label class="field-label">
+          AWB Range To
+        </label>
+
+        <input
+          type="text"
+          class="field-input"
+          placeholder="AWB9999">
+
       </div>
 
-      <!-- Row 3 -->
       <div class="col-lg-3 col-md-6">
-        <label class="form-label">SHIPPER PHONE NO</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="Mobile / Landline">
+
+        <label class="field-label">
+          Shipment Reference
+        </label>
+
+        <input
+          type="text"
+          class="field-input"
+          placeholder="Reference Number">
+
       </div>
 
       <div class="col-lg-3 col-md-6">
-        <label class="form-label">CONSIGNEE TEL NO</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="Mobile / Landline">
+
+        <label class="field-label">
+          Booking Reference
+        </label>
+
+        <input
+          type="text"
+          class="field-input"
+          placeholder="Booking Number">
+
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+
+        <label class="field-label">
+          Shipper Phone
+        </label>
+
+        <input
+          type="text"
+          class="field-input"
+          placeholder="Phone Number">
+
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+
+        <label class="field-label">
+          Consignee Phone
+        </label>
+
+        <input
+          type="text"
+          class="field-input"
+          placeholder="Phone Number">
+
       </div>
 
       <div class="col-lg-1 col-md-6">
-        <label class="form-label">ORIGIN</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="ORG">
+
+        <label class="field-label">
+          Origin
+        </label>
+
+        <input
+          type="text"
+          class="field-input">
+
       </div>
 
       <div class="col-lg-1 col-md-6">
-        <label class="form-label">DEST</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="DST">
+
+        <label class="field-label">
+          Dest
+        </label>
+
+        <input
+          type="text"
+          class="field-input">
+
       </div>
 
-      <div class="col-lg-4 col-md-12">
-        <label class="form-label">GOODS DESCRIPTION</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="Package Cargo Items">
+      <div class="col-lg-4">
+
+        <label class="field-label">
+          Goods Description
+        </label>
+
+        <input
+          type="text"
+          class="field-input"
+          placeholder="Shipment description">
+
       </div>
 
-      <!-- Row 4 -->
-      <div class="col-lg-3 col-md-6">
-        <label class="form-label">SPECIAL INSTRUCTION</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="Handling rules">
+      <div class="col-lg-3">
+
+        <label class="field-label">
+          Special Instruction
+        </label>
+
+        <input
+          type="text"
+          class="field-input">
+
       </div>
 
-      <div class="col-lg-2 col-md-6">
-        <label class="form-label">PRODUCT</label>
-        <input type="text" class="form-control custom-input">
+      <div class="col-lg-2">
+
+        <label class="field-label">
+          Product
+        </label>
+
+        <input
+          type="text"
+          class="field-input">
+
       </div>
 
-      <div class="col-lg-2 col-md-6">
-        <label class="form-label">SERVICE</label>
-        <input type="text" class="form-control custom-input">
+      <div class="col-lg-2">
+
+        <label class="field-label">
+          Service
+        </label>
+
+        <input
+          type="text"
+          class="field-input">
+
       </div>
 
-      <div class="col-lg-2 col-md-6">
-        <label class="form-label">WT FROM</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="0.00">
+      <div class="col-lg-2">
+
+        <label class="field-label">
+          Weight From
+        </label>
+
+        <input
+          type="text"
+          class="field-input">
+
       </div>
 
-      <div class="col-lg-2 col-md-6">
-        <label class="form-label">WT TO</label>
-        <input type="text" class="form-control custom-input"
-          placeholder="99.9">
+      <div class="col-lg-2">
+
+        <label class="field-label">
+          Weight To
+        </label>
+
+        <input
+          type="text"
+          class="field-input">
+
       </div>
 
-      <div class="col-lg-3 col-md-6">
-        <label class="form-label">SHIPMENT STATUS</label>
+      <div class="col-lg-3">
 
-        <div class="d-flex gap-3">
-          <select class="form-select custom-input">
-            <option>All Shipments</option>
-          </select>
+        <label class="field-label">
+          Shipment Status
+        </label>
 
-          <button class="btn execute-btn">
-            <i class="fa-solid fa-magnifying-glass me-2"></i>
-            Execute Query
-          </button>
-        </div>
+        <select class="field-input">
+          <option>All Shipments</option>
+        </select>
+
+      </div>
+
+      <div class="col-lg-3 d-flex align-items-end">
+
+        <button class="btn-query w-100">
+
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+          Execute Query
+
+        </button>
+
       </div>
 
     </div>
 
   </div>
 
-  <!-- Table -->
-  <div class="card shadow-sm border-0 rounded-4">
+  <!-- =========================================================
+       Results
+  ========================================================== -->
+
+  <div class="card-panel results-panel">
 
     <div class="table-responsive">
 
-      <table class="table mb-0">
+      <table class="table results-table mb-0">
+
         <thead>
+
           <tr>
+
             <th>Pickup Date</th>
             <th>AWB No.</th>
             <th>Shipper Ref</th>
             <th>Shipper Account</th>
             <th>Consignee Client</th>
             <th>Origin</th>
-            <th>Dest</th>
+            <th>Destination</th>
             <th>Weight</th>
             <th>Last Status</th>
+
           </tr>
+
         </thead>
 
         <tbody>
-            <!-- Replace this condition with API response -->
-        <!-- Example:
-        @if (awbs.length > 0) {
-        -->
 
-        <!-- Sample Row Design -->
-        <!--
-        @for (item of awbs; track item.awbNo) {
+          <!-- Data Here -->
+
           <tr>
-            <td>{{ item.pickupDate }}</td>
-            <td>
-              <span class="awb-number">
-                {{ item.awbNo }}
-              </span>
+
+            <td colspan="9">
+
+              <div class="empty-state">
+
+                <!-- <i class="fa-regular fa-folder-open empty-icon"></i> -->
+
+                <h5 class="empty-title">
+                  No shipment records found
+                </h5>
+
+                <p class="empty-subtitle">
+                  Configure the required search filters then execute the query.
+                </p>
+
+              </div>
+
             </td>
-            <td>{{ item.shipperRef }}</td>
-            <td>{{ item.shipperAccount }}</td>
-            <td>{{ item.consigneeClient }}</td>
-            <td>
-              <span class="badge-location">
-                {{ item.origin }}
-              </span>
-            </td>
-            <td>
-              <span class="badge-location">
-                {{ item.dest }}
-              </span>
-            </td>
-            <td>{{ item.weight }}</td>
-            <td>
-              <span class="status-badge delivered">
-                {{ item.lastStatus }}
-              </span>
-            </td>
+
           </tr>
-        }
-        -->
 
-        <!-- Temporary Empty State -->
-          <tr>
-            <td colspan="9" class="text-center py-5">
-
-              <i class="fa-regular fa-folder-open empty-icon"></i>
-
-              <h6 class="mt-3 text-secondary">
-                No active tracking records inside local workspace view layout.
-              </h6>
-
-              <small class="text-muted">
-                Configure filter rules above and click execution parameter.
-              </small>
-
-            </td>
-          </tr>
         </tbody>
 
       </table>
@@ -240,4 +361,4 @@
 
   </div>
 
-               </div>
+</div>

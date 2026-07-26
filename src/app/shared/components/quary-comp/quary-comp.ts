@@ -1,9 +1,10 @@
-import { ChangeDetectorRef, Component, EventEmitter, inject, Output, signal } from "@angular/core";
+import { ChangeDetectorRef, Component, effect, EventEmitter, inject, Output, signal } from "@angular/core";
 import { Complaint } from "../../../core/interfaces/compliant/qaury";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { QuaryService } from "../../../core/services/compliant/quarycomplian";
 import { StorageService } from "../../../core/services/auth/storgeENC";
 import { SlicePipe } from "@angular/common";
+import { StateService } from "../../../core/State/awbState";
 
 @Component({
   selector: "app-quary-comp",
@@ -12,6 +13,21 @@ import { SlicePipe } from "@angular/common";
   styleUrl: "./quary-comp.css",
 })
 export class QuaryComp {
+  constructor(private _awbsate:StateService){
+    effect(()=>{
+      const awb = this._awbsate.awbNum()
+      if(!awb)return
+      this.CompliantSearchForm.patchValue({
+        AWBno:awb
+      })
+      console.log(
+      'FORM AWB:',
+      this.CompliantSearchForm.get('AWBno')?.value
+    );
+      this.SearchNow()
+    })
+
+  }
   complaints: Complaint[] = [];
 
   private _compliantService = inject(QuaryService);
@@ -41,6 +57,21 @@ export class QuaryComp {
    // this.complaints = [];
     const userCrad = this._storgeSer.getItem("userCredentials");
     console.log(userCrad);
+      const today = new Date();
+
+  const dateTo = today.toISOString().split("T")[0];
+
+
+  const dateFromDate = new Date();
+  dateFromDate.setFullYear(today.getFullYear() - 1);
+
+  const dateFrom = dateFromDate.toISOString().split("T")[0];
+
+
+  this.CompliantSearchForm.patchValue({
+    DateFrom: dateFrom,
+    DateTo: dateTo
+  });
 
     const form = this.CompliantSearchForm.getRawValue();
 
@@ -102,23 +133,37 @@ where 1=1
       .getQuery(this.CompliantSearchForm.getRawValue())
       .subscribe({
         next: (res) => {
-          if (res.Code === "-1") {
-            this.complaints = [];
-            this.isEmpty.set(true);
-            this.popupOpen.set(true);
-            return;
-          }
+           this.complaints = [];
+  this.isEmpty.set(false);
 
-          this.complaints = JSON.parse(res.JasonString);
-          const newData: Complaint[] = JSON.parse(res.JasonString);
 
-          if (newData.length > 0) {
-            this.complaints = newData;
-            this.isEmpty.set(false);
-          }
+  if (
+    res.Code === "-1" ||
+    !res.JasonString ||
+    res.JasonString === "[]" ||
+    JSON.parse(res.JasonString).length === 0
+  ) {
 
-          this.isEmpty.set(false);
-          this.cdr.detectChanges();
+    this.complaints = [];
+
+    this.isEmpty.set(true);
+
+    this.popupOpen.set(true);
+
+    this.cdr.detectChanges();
+
+    return;
+  }
+
+
+  const newData: Complaint[] = JSON.parse(res.JasonString);
+
+
+  this.complaints = newData;
+
+  this.isEmpty.set(false);
+
+  this.cdr.detectChanges();
         },
         error: (err) => {
           console.log(err);

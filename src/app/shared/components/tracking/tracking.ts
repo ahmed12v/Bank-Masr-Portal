@@ -7,6 +7,7 @@ import {
   TrackList,
 } from "../../../core/interfaces/tracking/responseTrack";
 import { CommonModule } from "@angular/common";
+import { StateService } from "../../../core/State/awbState";
 export interface ConsigneeDetails {
   name: string;
   address: string;
@@ -23,6 +24,7 @@ export class Tracking {
   //#region Services
   private _trackingService = inject(Trackingser);
   private _storgeCradintioal = inject(StorageService);
+  private _awbStaeService=inject(StateService)
   private cdr = inject(ChangeDetectorRef);
   trackInfooo: TrackInfoRes | null = null;
   tracklistArray: TrackList[] = [];
@@ -81,19 +83,25 @@ export class Tracking {
     this.isEmpty = false;
     this.trackInfooo = null;
     this.tracklistArray = [];
-
+    const trackAwbNum = this.trackFormSend.value.TrackingNo?.trim();
+        if (trackAwbNum) {
+           console.log('NEW AWB:', trackAwbNum);
+           this._awbStaeService.set(trackAwbNum);
+           
+          }
     const userCrad = this._storgeCradintioal.getItem("userCredentials");
 
     this.trackFormSend.patchValue({
       AccountNo: userCrad.CoCode,
       AccountPWD: userCrad.UserPWD,
     });
+   
 
     if (this.trackFormSend.valid) {
       this._trackingService.TrackingAWB(this.trackFormSend.value).subscribe({
         next: (res) => {
           //console.log('Tracking Response:', res);
-
+          
           // No Data
           if (res.code === "-1" || !res.TrackInfo?.length) {
             this.isEmpty = true;
@@ -101,12 +109,15 @@ export class Tracking {
             this.tracklistArray = [];
             this.cdr.detectChanges();
             this.popupOpen.set(true);
+           
             return;
           }
           // Has Data
           this.isEmpty = false;
           this.trackInfooo = res;
           this.tracklistArray = [...res.TrackInfo[0].trackList];
+           
+          
 
           const consignee =
             res.TrackInfo[0].ShipmentInformation.ConsigneeDetails;

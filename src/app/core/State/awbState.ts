@@ -1,0 +1,24 @@
+import { Injectable, signal } from "@angular/core";
+
+@Injectable({
+    providedIn:'root'
+})
+export class StateService{
+private readonly _awbNum = signal<string | null>(null);
+
+readonly awbNum = this._awbNum.asReadonly();
+
+set(value: string) {
+
+  this._awbNum.set(null);
+
+  setTimeout(() => {
+    this._awbNum.set(value);
+  });
+
+}
+
+clear(): void {
+  this._awbNum.set(null);
+}
+}

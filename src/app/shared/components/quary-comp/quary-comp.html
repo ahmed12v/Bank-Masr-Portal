@@ -19,7 +19,7 @@
 </div>
 
   <!-- Filters Card -->
-   <form [formGroup]="CompliantSearchForm" (ngSubmit)="SearchNow()">
+   <form class="d-none" [formGroup]="CompliantSearchForm" (ngSubmit)="SearchNow()">
   <div class="card-panel filters-panel">
     <div class="row gx-3 gy-3">
 
@@ -313,7 +313,7 @@ Open
   </div>
 
 </div>
- @if (popupOpen()) {
+ <!-- @if (popupOpen()) {
 
 <div class="popup-overlay" (click)="popupOpen.set(false)">
 
@@ -340,4 +340,4 @@ Open
 
 </div>
 
-}
+} -->
