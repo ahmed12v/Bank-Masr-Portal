@@ -21,10 +21,10 @@ export class AWBsearch {
         AWBRangeFrom:awb,
         AWBRangeTo:awb,
       })
-      console.log(
-      'FORM AWB:',
-      this.panelForm.get('AWBno')?.value
-    );
+     // console.log(
+     // 'FORM AWB:',
+     // this.panelForm.get('AWBno')?.value
+    //);
       this.panelNow()
       // this._awbsate.set('');
     })
@@ -173,7 +173,7 @@ export class AWBsearch {
       this.searchPanelService.searchNowPanel(request).subscribe({
         next:res=>{
                this.awbSearch=[]
-               console.log( 'panel', res);
+              // console.log( 'panel', res);
                if (
                 res.code === "-1" ||
                 !res.JasonString ||

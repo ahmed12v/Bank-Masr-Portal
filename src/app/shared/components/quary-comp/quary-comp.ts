@@ -14,10 +14,10 @@ import { StateService } from "../../../core/State/awbState";
 })
 export class QuaryComp {
   constructor(private _awbsate:StateService){
-     console.log('QUERY CONSTRUCTOR:', this._awbsate.awbNum());
+   //  console.log('QUERY CONSTRUCTOR:', this._awbsate.awbNum());
     effect(()=>{
       const awb = this._awbsate.awbNum()
-         console.log('EFFECT AWB:', awb);
+       //  console.log('EFFECT AWB:', awb);
       if(!awb)return
       this.CompliantSearchForm.patchValue({
         AWBno:awb
@@ -58,7 +58,7 @@ export class QuaryComp {
   SearchNow() {
    // this.complaints = [];
     const userCrad = this._storgeSer.getItem("userCredentials");
-    console.log(userCrad);
+   // console.log(userCrad);
       const today = new Date();
 
   const dateTo = today.toISOString().split("T")[0];
@@ -128,7 +128,7 @@ where 1=1
       SqlString: sql,
     });
 
-    console.log(sql);
+    //console.log(sql);
     this._compliantService
       .getQuery(this.CompliantSearchForm.getRawValue())
       .subscribe({
@@ -163,7 +163,7 @@ where 1=1
            //this._awbsate.clear()
         },
         error: (err) => {
-          console.log(err);
+         // console.log(err);
            //this._awbsate.clear()
         },
        
@@ -214,7 +214,6 @@ where 1=1
 opennComplaint() {
   
    const awb = this._awbsate.awbNum();
-  //console.log('AWB:', awb);
   this.createComplaint.emit(awb || '');
   
 }

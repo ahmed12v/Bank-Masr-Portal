@@ -85,9 +85,9 @@ export class Tracking {
     this.tracklistArray = [];
       const trackAwbNum = this.trackFormSend.value.TrackingNo?.trim();
                 if (trackAwbNum) {
-                  console.log('NEW AWB:', trackAwbNum);
+                  //console.log('NEW AWB:', trackAwbNum);
                   this._awbStaeService.set(trackAwbNum);
-                  console.log('STATE VALUE:', this._awbStaeService.awbNum());
+                  //console.log('STATE VALUE:', this._awbStaeService.awbNum());
                   
           
           }

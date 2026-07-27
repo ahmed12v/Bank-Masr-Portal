@@ -3,7 +3,7 @@ import { StateService } from '../../../core/State/awbState';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { StorageService } from '../../../core/services/auth/storgeENC';
 import { RaiseService } from '../../../core/services/compliant/raiseCompliant';
-import { CustomerDetails, GetAccountDetialsResponse } from '../../../core/interfaces/raiseComplain/raiseInterfaces';
+import { CustomerDetails, GetAccountDetialsResponse, ResponseCome } from '../../../core/interfaces/raiseComplain/raiseInterfaces';
 
 @Component({
   selector: 'app-raise-compliant',
@@ -15,14 +15,15 @@ export class RaiseCompliant implements OnInit{
   ngOnInit(): void {
     this.getNumber()
     this.getMyDetials()
+    this.getSelectorMaster()
   }
   constructor(private _awbState: StateService) {
 
   effect(() => {
-    console.log(
-      'RAISE EFFECT VALUE:',
-      this._awbState.awbNum()
-    );
+    // console.log(
+    //   'RAISE EFFECT VALUE:',
+    //   this._awbState.awbNum()
+    // );
     this.complaintForm.patchValue({
       ComplaintData:{
         cl_AWBNO:this._awbState.awbNum()
@@ -51,11 +52,10 @@ _storgeData=inject(StorageService)
 _raiseService=inject(RaiseService)
 complainRgister=signal<string|null>('')
 accountDetails = signal<CustomerDetails | null>(null);
+selectors=signal<ResponseCome[] | null>(null)
+today = new Date().toISOString().split('T')[0];
+
 //#endregion
-
-
-
-
 
 //#region RaiseForm
 complaintForm = new FormGroup({
@@ -152,9 +152,42 @@ getMyDetials(){
     }
   })
 }
+//#endregion
 
+//#region resetCustData
 resetAll(){
   this.getNumber()
   this.getMyDetials()
 }
+//#endregion
+
+//#region masterList
+masterFOrm:FormGroup = new FormGroup({
+  MasterType:new FormControl("CMPL"),
+  UserId:new FormControl(""),
+  UserPwd:new FormControl(""),
+})
+
+getSelectorMaster(){
+const userCardentioanl = this._storgeData.getItem('userCredentials')
+this.masterFOrm.patchValue({
+  MasterType:"CMPL",
+  UserId:userCardentioanl.UserID,
+  UserPwd:userCardentioanl.UserPwd,
+})
+
+if(this.masterFOrm.valid){
+  this._raiseService.getMasterTypeSelector(this.masterFOrm.value).subscribe({
+    next:res=>{
+      //console.log(res);
+      this.selectors.set(res.Response)
+    },
+    error:err=>{
+     // console.log(err);
+    }
+  })
+}
+}
+//#endregion
+
 }

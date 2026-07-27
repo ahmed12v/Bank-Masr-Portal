@@ -35,7 +35,7 @@
 
                         <div class="col-md-6">
                             <label>Date Lodged</label>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" readonly [value]="today">
                         </div>
 
                         <div class="col-md-6">
@@ -107,7 +107,12 @@
                         <div class="col-md-12">
                             <label>Root Classification Category Type</label>
                             <select class="form-select">
-                                <option>Select Category</option>
+                                <option value="" selected disabled>-- Select --</option>
+                                @for (item of selectors(); track $index) {
+                                    
+                                    <option [value]="item.cl_CodeName"> {{item.cl_CodeName}} </option>
+                                }
+                                
                             </select>
                         </div>
 
@@ -124,7 +129,7 @@
 
                         <div class="col-12">
                             <label>Consolidated Resolution Action Taken Summary</label>
-                            <textarea class="form-control" rows="5"
+                            <textarea class="form-control" rows="5" readonly
                                 placeholder="Read-only operations desk resolution summary log..."></textarea>
                         </div>
 
