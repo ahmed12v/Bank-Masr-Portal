@@ -23,14 +23,14 @@
                 <div class="card-header dark-header">
                     Complainant Contact Context
                 </div>
-
-                <div class="card-body">
+              
+                        <div class="card-body">
 
                     <div class="row g-3">
 
                         <div class="col-md-6">
                             <label>Registration No.</label>
-                            <input type="text" class="form-control" value="10057">
+                            <input type="text" class="form-control" [value]="complainRgister()" readonly>
                         </div>
 
                         <div class="col-md-6">
@@ -40,27 +40,27 @@
 
                         <div class="col-md-6">
                             <label>Account Code</label>
-                            <input type="text" class="form-control" value="D77777">
+                            <input type="text" class="form-control" [value]="accountDetails()?.cl_AccCode" readonly>
                         </div>
 
                         <div class="col-md-6">
                             <label>Company Profile Corporate Title</label>
-                            <input type="text" class="form-control" value="TEST">
+                            <input type="text" class="form-control" [value]="accountDetails()?.cl_CustName" readonly>
                         </div>
 
                         <div class="col-md-12">
                             <label>Complainant Registered Name</label>
-                            <input type="text" class="form-control" value="test person">
+                            <input type="text" class="form-control" [value]="accountDetails()?.cl_CPerson" readonly>
                         </div>
 
                         <div class="col-md-6">
                             <label>Contact Phone No.</label>
-                            <input type="text" class="form-control" value="974588122">
+                            <input type="text" class="form-control" [value]="accountDetails()?.cl_CustPhone" readonly>
                         </div>
 
                         <div class="col-md-6">
                             <label>Communication Email Endpoint</label>
-                            <input type="email" class="form-control" value="testdemo@gmail.com">
+                            <input type="email" class="form-control" [value]="accountDetails()?.cl_CustEMail" readonly>
                         </div>
 
                         <div class="col-12">
@@ -72,6 +72,8 @@
                     </div>
 
                 </div>
+              
+               
 
             </div>
       
@@ -111,13 +113,13 @@
 
                         <div class="col-md-6">
                             <label>Internal Status Code</label>
-                            <input type="text" class="form-control" placeholder="Status ID">
+                            <input type="text" class="form-control" placeholder="Status ID" readonly>
                         </div>
 
                         <div class="col-md-6">
                             <label>Current Processing Status Label</label>
                             <input type="text" class="form-control"
-                                value="Pending Resolution Trail Discovery">
+                                value="Pending Resolution Trail Discovery" readonly>
                         </div>
 
                         <div class="col-12">
@@ -152,7 +154,7 @@
             <i class="fa fa-plus"></i> Append Notes
         </button>
 
-        <button class="btn btn-outline-secondary">
+        <button class="btn btn-outline-secondary" (click)="resetAll()">
             <i class="fa fa-rotate"></i> Clear Screen
         </button>
 

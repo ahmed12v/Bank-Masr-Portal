@@ -1,6 +1,9 @@
-import { Component, effect } from '@angular/core';
+import { Component, effect, inject, OnInit, signal } from '@angular/core';
 import { StateService } from '../../../core/State/awbState';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { StorageService } from '../../../core/services/auth/storgeENC';
+import { RaiseService } from '../../../core/services/compliant/raiseCompliant';
+import { CustomerDetails, GetAccountDetialsResponse } from '../../../core/interfaces/raiseComplain/raiseInterfaces';
 
 @Component({
   selector: 'app-raise-compliant',
@@ -8,7 +11,11 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './raise-compliant.html',
   styleUrl: './raise-compliant.css',
 })
-export class RaiseCompliant {
+export class RaiseCompliant implements OnInit{
+  ngOnInit(): void {
+    this.getNumber()
+    this.getMyDetials()
+  }
   constructor(private _awbState: StateService) {
 
   effect(() => {
@@ -24,8 +31,6 @@ export class RaiseCompliant {
   });
 
 }
- 
- 
   isOpen = false;
 
 openModal() {
@@ -37,11 +42,18 @@ closeModal() {
   this.isOpen = false;
   document.body.style.overflow = 'auto'; 
 }
-  
-
 restform(){
   //this.form.clear
 }
+
+//#region Declartions
+_storgeData=inject(StorageService)
+_raiseService=inject(RaiseService)
+complainRgister=signal<string|null>('')
+accountDetails = signal<CustomerDetails | null>(null);
+//#endregion
+
+
 
 
 
@@ -51,45 +63,98 @@ complaintForm = new FormGroup({
   UserID: new FormControl(''),
   UserPwd: new FormControl(''),
 
-  ComplaintData: new FormGroup({
+      ComplaintData: new FormGroup({
 
-    cl_COREG: new FormControl(''),
-    cl_CoDate: new FormControl(''),
+        cl_COREG: new FormControl(''),
+        cl_CoDate: new FormControl(''),
+        cl_AWBNO: new FormControl(''),
+        cl_Act: new FormControl(''),
+        cl_AssignTo: new FormControl(''),
+        cl_ClientCode: new FormControl(''),
+        cl_CustName: new FormControl(''),
+        cl_EnqRefNo: new FormControl(''),
+        cl_Lev: new FormControl(''),
+        cl_Remarks: new FormControl(''),
+        cl_Root: new FormControl(''),
+        cl_Status: new FormControl(''),
+        cl_cPerson: new FormControl(''),
+        cl_complaint: new FormControl(''),
+        cl_email: new FormControl(''),
+        cl_empcode: new FormControl(''),
+        cl_empcode1: new FormControl(''),
+        cl_sri: new FormControl(''),
+        cl_tel: new FormControl(''),
+        cl_Car: new FormControl(''),
+        cl_CarNo: new FormControl('')
 
-    cl_AWBNO: new FormControl(''),
-
-    cl_Act: new FormControl(''),
-    cl_AssignTo: new FormControl(''),
-
-    cl_ClientCode: new FormControl(''),
-    cl_CustName: new FormControl(''),
-
-    cl_EnqRefNo: new FormControl(''),
-
-    cl_Lev: new FormControl(''),
-    cl_Remarks: new FormControl(''),
-    cl_Root: new FormControl(''),
-
-    cl_Status: new FormControl(''),
-
-    cl_cPerson: new FormControl(''),
-
-    cl_complaint: new FormControl(''),
-
-    cl_email: new FormControl(''),
-
-    cl_empcode: new FormControl(''),
-    cl_empcode1: new FormControl(''),
-
-    cl_sri: new FormControl(''),
-
-    cl_tel: new FormControl(''),
-
-    cl_Car: new FormControl(''),
-    cl_CarNo: new FormControl('')
-
-  })
+      })
 
 });
 //#endregion
+
+//#region getRegistNumber
+registForm:FormGroup=new FormGroup({
+  AccountNo:new FormControl(''),
+  CustomerCode:new FormControl(''),
+  UserID:new FormControl(''),
+  UserPwd:new FormControl(''),
+})
+
+getNumber(){
+const userCradentiona = this._storgeData.getItem('userCredentials');
+this.registForm.patchValue({
+  AccountNo:userCradentiona.CoCode,
+  CustomerCode:userCradentiona.CoCode,
+  UserPwd:userCradentiona.UserPWD,
+  UserID:userCradentiona.UserID
+})
+
+if(this.registForm.valid){
+  this._raiseService.getComplianNumber(this.registForm.value).subscribe({
+    next:res=>{
+      //console.log(res);
+      if(res.BookingNo){
+        this.complainRgister.set(res.BookingNo)
+      
+      }
+    },
+    error:err=>{
+      //console.log(err);
+    }
+  })
+}
+
+}
+//#endregion
+
+//#region getAcountDetails
+acountDetialsForm:FormGroup=new FormGroup({
+  AccountNo:new FormControl(''),
+  UserID:new FormControl(''),
+  UserPwd:new FormControl(''),
+})
+
+getMyDetials(){
+  const userCradentional = this._storgeData.getItem('userCredentials')
+  this.acountDetialsForm.patchValue({
+      AccountNo:userCradentional.CoCode,
+      UserID:userCradentional.UserID,
+      UserPwd:userCradentional.UserPWD,
+  })
+  this._raiseService.getAccountDetails(this.acountDetialsForm.value).subscribe({
+    next:res=>{
+       // console.log(res);
+         this.accountDetails.set(res.CustomerDetails);
+        
+    },
+    error:err=>{
+       // console.log(err);
+    }
+  })
+}
+
+resetAll(){
+  this.getNumber()
+  this.getMyDetials()
+}
 }
