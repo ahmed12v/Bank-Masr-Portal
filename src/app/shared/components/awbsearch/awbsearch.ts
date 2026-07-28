@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { StorageService } from '../../../core/services/auth/storgeENC';
 import { StateService } from '../../../core/State/awbState';
 import { ShipmentDetails } from '../../../core/interfaces/AWBSearch/awbSearchinterface';
+import { podStateService } from '../../../core/State/Pod';
 
 @Component({
   selector: 'app-awbsearch',
@@ -35,6 +36,7 @@ export class AWBsearch {
   searchPanelService=inject(searchPanelService)
   _storgeSer=inject(StorageService)
   awbSearch : ShipmentDetails[] =[]
+  _podService= inject(podStateService)
   isEmpty=signal(false)
   private cdr = inject(ChangeDetectorRef);
   //#endregion
@@ -188,8 +190,12 @@ export class AWBsearch {
                 return;
               }
               const newData: ShipmentDetails[] = JSON.parse(res.JasonString);
-              
-              
+              if(newData.length){
+             this._podService.set(newData[0].Status)
+
+              }else{
+                this._podService.clear()
+              }
                 this.awbSearch = newData;
                 this.isEmpty.set(false);
                 this.cdr.markForCheck();
@@ -207,5 +213,5 @@ export class AWBsearch {
   }
   //#endregion
 
-
+  
 }

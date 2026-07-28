@@ -112,6 +112,30 @@
             {{ trackInfooo.TrackInfo[0].ShipmentInformation.ShipperDetails }}
           </div>
 
+         <div class="card-panel summary-panel mt-3">
+  <div class="row g-4">
+    <!-- Card information -->
+    <div class="col-md-6">
+      <div class="summary-label">Card Type</div>
+      <div class="summary-value">Debit (VPC)</div>
+    </div>
+    <!-- <div class="col-md-6">
+      <div class="summary-label">Card Name</div>
+      <div class="summary-value">Visa Platinum (VP)</div>
+    </div> -->
+    <!-- if returned to any branch related Bank Masr -->
+    <!-- <div class="col-md-6">
+      <div class="summary-label">Branch Number</div>
+      <div class="summary-value">110</div>
+    </div> -->
+    <!-- customer national id if clint recived bank card -->
+    <div class="col-md-6">
+      <div class="summary-label">National ID</div>
+      <div class="summary-value">{{nationalId()}}</div>
+    </div>
+  </div>
+</div>
+
         </div>
 
         <div class="col-12 col-lg-6 party-block">
@@ -246,7 +270,8 @@
             </div>
 
             <div class="journey-remarks">
-              {{ step.Remarks }}
+              
+              {{getRemarksName(step.Remarks) }}
             </div>
 
           </div>

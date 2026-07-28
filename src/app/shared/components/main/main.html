@@ -13,7 +13,7 @@
  </div> -->
 
 
-        <div class="accordion-body">
+        <div class="accordion-body container">
 
  
               <app-tracking></app-tracking>
@@ -22,17 +22,16 @@
             
               <app-awbsearch></app-awbsearch>
             
-              <app-delivery-mangement></app-delivery-mangement>
+               @if (!isPod()) {
+               <app-delivery-mangement></app-delivery-mangement>
+               }
 
               <div #raiseComplaintSection>
                   <app-raise-compliant></app-raise-compliant>
               </div>
           
-              
-            
               <!-- <app-domastic-awb-greation></app-domastic-awb-greation> -->
   
-
        </div>  
       
 

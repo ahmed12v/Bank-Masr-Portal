@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, computed, ElementRef, inject, ViewChild } from '@angular/core';
 import { AWBsearch } from '../awbsearch/awbsearch';
 import { DeliveryMangement } from '../delivery-mangement/delivery-mangement';
 import { DomasticAwbGreation } from '../domastic-awb-greation/domastic-awb-greation';
@@ -6,6 +6,7 @@ import { RaiseCompliant } from '../raise-compliant/raise-compliant';
 import { Tracking } from '../tracking/tracking';
 import { QuaryComp } from '../quary-comp/quary-comp';
 import { StateService } from '../../../core/State/awbState';
+import { podStateService } from '../../../core/State/Pod';
 
 @Component({
   selector: 'app-main',
@@ -15,7 +16,10 @@ import { StateService } from '../../../core/State/awbState';
 })
 export class Main {
   _awbstae=inject(StateService)
+  _podStaus=inject(podStateService)
   selectedAwb = '';
+  status=this._podStaus.status;
+  isPod= computed(()=>this.status() === 'POD')
 
    sections = [
     

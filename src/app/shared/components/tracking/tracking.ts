@@ -8,6 +8,7 @@ import {
 } from "../../../core/interfaces/tracking/responseTrack";
 import { CommonModule } from "@angular/common";
 import { StateService } from "../../../core/State/awbState";
+import { ShipmentStateService } from "../../../core/State/consigneState";
 export interface ConsigneeDetails {
   name: string;
   address: string;
@@ -31,6 +32,8 @@ export class Tracking {
   isEmpty = false;
   spinnerTrack = signal(false);
   popupOpen = signal(false);
+  _shipmentState=inject(ShipmentStateService)
+  nationalId=signal<string | null>(null)
   //#endregion
 
   //#region consignee data hundel
@@ -112,13 +115,17 @@ export class Tracking {
             this.tracklistArray = [];
             this.cdr.detectChanges();
             this.popupOpen.set(true);
-           
             return;
           }
           // Has Data
           this.isEmpty = false;
           this.trackInfooo = res;
           this.tracklistArray = [...res.TrackInfo[0].trackList];
+          this._shipmentState.set(res.TrackInfo[0].ShipmentInformation)
+          const remarks = this.tracklistArray[0].Remarks;
+          const match = remarks?.match(/ID:(\d+)/);
+          const nationalId = match ? match[1] : '';
+          this.nationalId.set(nationalId);
           
               
            
@@ -141,6 +148,9 @@ export class Tracking {
       });
     }
   }
+  getRemarksName(remarks: string): string {
+  return remarks?.replace(/\s*ID:\s*\d+/, '') ?? '';
+}
   //#endregion
 
 }

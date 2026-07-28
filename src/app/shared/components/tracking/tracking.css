@@ -499,6 +499,13 @@
 
   transition: .2s;
 }
+.summary-value {
+  word-break: break-word;
+}
+
+.summary-item {
+  padding: 8px 16px;
+}
 
 .status-popup-close:hover {
   color: var(--primary-color);

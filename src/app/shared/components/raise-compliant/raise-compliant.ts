@@ -158,6 +158,7 @@ getMyDetials(){
 resetAll(){
   this.getNumber()
   this.getMyDetials()
+  this.complaintForm.reset()
 }
 //#endregion
 
